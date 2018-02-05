@@ -45,18 +45,14 @@ namespace Math {
 	}
 
 
-	float MathUtilities::Angle(double)
+	float MathUtilities::ConvertRadToDegrees(float angleInRadians)
 	{
+		return angleInRadians * (PI / 180);
+	}
 
-		// degree to radian
-		float degree, radian;
-		radian = (degree*3.14) / 180;
-		std::cout << "radian:" << radian;
-		//radian to degree
-		degree = (radian * 180) / 3.14;
-		std::cout << "degree:" << degree;
-
-		return radian;
+	float MathUtilities::ConvertDegreesToRad(float angleInDegrees)
+	{
+		return angleInDegrees * (180 / PI);
 	}
 
 	float MathUtilities::Distance(double)
