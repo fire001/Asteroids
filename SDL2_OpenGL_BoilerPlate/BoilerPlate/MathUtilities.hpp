@@ -1,16 +1,20 @@
 #pragma once
-
-#include <math.h>
+#ifndef _MATH_HPP_
+#define _MATH_HPP_
+#include <cmath>
 #include <iostream>
-#include <stdio.h>
 #include <algorithm>
 #include <cstdlib>
+#include <string>
+
 namespace Math {
 	class MathUtilities
 	{
 	public:
 		float intToFloat;
 		int floatToInt;
+
+		const float PI = 3.1415926535897323846f;
 
 		MathUtilities();
 		~MathUtilities();
@@ -19,7 +23,8 @@ namespace Math {
 		float Round(int);
 		float PoweOfTwo(int);
 		template<class T> T Clamp(T);
-		float Angle(double);
+		float ConvertRadToDegrees(float);
+		float ConvertDegreesToRad(float);
 		float Distance(double);
 
 	private:
@@ -34,3 +39,4 @@ namespace Math {
 		double x;
 	};
 }
+#endif // !_MATH_HPP_

@@ -8,9 +8,11 @@
     <ClCompile Include="stb_image.c" />
     <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="Color.cpp" />
-    <ClCompile Include="..\..\..\..\..\Desktop\Asteroids-master\BoilerPlate\Vector2D.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Models.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -18,10 +20,12 @@
     <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
     <ClInclude Include="Color.h" />
-    <ClInclude Include="..\..\..\..\..\Desktop\Asteroids-master\BoilerPlate\Vector2D.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="PlayerShip.h" />
+    <ClInclude Include="Vector2.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Models.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
