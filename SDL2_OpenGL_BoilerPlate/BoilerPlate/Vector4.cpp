@@ -1,4 +1,5 @@
-#include "Vector4.h"
+
+#include "Vector4.hpp"
 
 
 namespace Engine
@@ -74,92 +75,94 @@ namespace Engine
 			return *this;
 		}
 
-		Vector3 & Vector3::operator+=(const Vector3 & rhs)
+		Vector4 & Vector4::operator+=(const Vector4 & rhs)
 		{
 			m_x = m_x + rhs.m_x;
 			m_y = m_y + rhs.m_y;
 			m_z = m_z + rhs.m_z;
-
+			m_w = m_w + rhs.m_w;
 			return *this;
 		}
 
-		Vector3 & Vector3::operator-=(const Vector3 & rhs)
+		Vector4 & Vector4::operator-=(const Vector4 & rhs)
 		{
 			m_x = m_x - rhs.m_x;
 			m_y = m_y - rhs.m_y;
 			m_z = m_z - rhs.m_z;
-
+			m_w = m_w - rhs.m_w;
 			return *this;
 		}
 
-		Vector3 & Vector3::operator*=(const Vector3 & rhs)
+		Vector4 & Vector4::operator*=(const Vector4 & rhs)
 		{
 			m_x = m_x * rhs.m_x;
 			m_y = m_y * rhs.m_y;
 			m_z = m_z * rhs.m_z;
+			m_w = m_w * rhs.m_w;
 
 			return *this;
 		}
 
-		Vector3 & Vector3::operator/=(const Vector3 & rhs)
+		Vector4 & Vector4::operator/=(const Vector4 & rhs)
 		{
 			m_x = m_x / rhs.m_x;
 			m_y = m_y / rhs.m_y;
 			m_z = m_z / rhs.m_z;
-
+			m_w = m_w / rhs.m_w;
 			return *this;
 		}
 
-		Vector3 Vector3::operator+(const Vector3 & rhs)
+		Vector4 Vector4::operator+(const Vector4 & rhs)
 		{
-			Vector3 sum;
+			Vector4 sum;
 
 			sum.m_x = m_x + rhs.m_x;
 			sum.m_y = m_y + rhs.m_y;
 			sum.m_z = m_z + rhs.m_z;
-
+			sum.m_w = m_w + rhs.m_w;
 			return sum;
 		}
 
-		Vector3 Vector3::operator-(const Vector3 & rhs)
+		Vector4 Vector4::operator-(const Vector4 & rhs)
 		{
-			Vector3 sub;
+			Vector4 sub;
 			sub.m_x = m_x - rhs.m_x;
 			sub.m_y = m_y - rhs.m_y;
 			sub.m_z = m_z - rhs.m_z;
-
+			sub.m_w = m_w - rhs.m_w;
 			return sub;
 		}
 
-		Vector3 Vector3::operator-()
+		Vector4 Vector4::operator-()
 		{
-			return Vector3(-m_x, -m_y, -m_z);
+			return Vector4(-m_x, -m_y, -m_z, -m_w);
 		}
 
-		Vector3 Vector3::operator*(const Vector3 & rhs)
+		Vector4 Vector4::operator*(const Vector4 & rhs)
 		{
-			Vector3 scaled;
+			Vector4 scaled;
 
 			scaled.m_x = m_x * rhs.m_x;
 			scaled.m_y = m_y * rhs.m_y;
 			scaled.m_z = m_z * rhs.m_z;
-
+			scaled.m_w = m_w * rhs.m_w;
 			return scaled;
 		}
 
-		Vector3 Vector3::operator/(const Vector3 & rhs)
+		Vector4 Vector4::operator/(const Vector4 & rhs)
 		{
-			Vector3 inverseScaled;
+			Vector4 inverseScaled;
 
 			inverseScaled.m_x = m_x / rhs.m_x;
 			inverseScaled.m_y = m_y / rhs.m_y;
 			inverseScaled.m_z = m_z / rhs.m_z;
+			inverseScaled.m_w = m_w / rhs.m_w;
 			return inverseScaled;
 		}
 
-		bool Vector3::operator==(const Vector3 & rhs)
+		bool Vector4::operator==(const Vector4 & rhs)
 		{
-			if (this->m_x == rhs.m_x && this->m_y == rhs.m_y && this->m_z == rhs.m_z)
+			if (this->m_x == rhs.m_x && this->m_y == rhs.m_y && this->m_z == rhs.m_z && this->m_w == rhs.m_w)
 			{
 				return true;
 			}
@@ -169,9 +172,9 @@ namespace Engine
 			}
 		}
 
-		bool Vector3::operator!=(const Vector3 & rhs)
+		bool Vector4::operator!=(const Vector4 & rhs)
 		{
-			if (this->m_x != rhs.m_x || this->m_y != rhs.m_y || this->m_z != rhs.m_z)
+			if (this->m_x != rhs.m_x || this->m_y != rhs.m_y || this->m_z != rhs.m_z || this->m_w != rhs.m_w)
 			{
 				return true;
 			}
