@@ -7,7 +7,7 @@
 
 namespace Engine
 {
-	namespace MathUtilities
+	namespace Entity
 	{
 			class PlayerShip
 			{
@@ -32,7 +32,8 @@ namespace Engine
 
 				virtual void Translate(Engine::MathUtilities::Vector2 pos) { m_position = pos; };
 				void ApplyImpulse();
-				Engine::MathUtilities::Vector2 Impulse();
+				//Engine::MathUtilities::Vector2 Impulse();
+				void Impulse();
 				void Rotate(float);
 				void Render(unsigned int, std::vector<Engine::MathUtilities::Vector2>, Engine::MathUtilities::Vector2 position);
 				void Render(unsigned int, Engine::MathUtilities::Vector2, float);

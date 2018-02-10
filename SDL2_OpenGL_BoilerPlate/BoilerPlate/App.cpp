@@ -81,30 +81,30 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_W:
-			m_player->m_player->MoveForward();
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_A:
-			m_player->m_player->MoveLeft();
+			m_player->MoveLeft();
 			break;
 		case SDL_SCANCODE_S:
 			//NOTHING
 			break;
 		case SDL_SCANCODE_D:
-			m_player->m_player->MoveRight();
+			m_player->MoveRight();
 			break;
 		case SDL_SCANCODE_UP:
-			m_player->m_player->MoveForward();
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_LEFT:
-			m_player->m_player->MoveLeft();
+			m_player->MoveLeft();
 			break;
 		case SDL_SCANCODE_RIGHT:
-			m_player->m_player->MoveRight();
+			m_player->MoveRight();
 			break;
 		case SDL_SCANCODE_DOWN:
 			break;
 		case SDL_SCANCODE_SPACE:
-			m_player->m_player->Shoot();
+			//m_player->Shoot();
 			break;
 		case SDL_SCANCODE_P:
 			//Do nothing
@@ -128,7 +128,7 @@ namespace Engine
 		case SDL_SCANCODE_D:
 			break;
 		case SDL_SCANCODE_P:
-			m_player->ChangePlayerModel();
+			//m_player->ChangePlayerModel();
 			break;
 		case SDL_SCANCODE_UP:
 			break;
@@ -153,6 +153,7 @@ namespace Engine
 
 		// Update code goes here
 		//
+		m_player->Update(DESIRED_FRAME_RATE);
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;

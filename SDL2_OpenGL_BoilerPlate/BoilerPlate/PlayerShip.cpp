@@ -5,19 +5,19 @@
 
 	namespace Engine
 	{
-		namespace MathUtilities
+		namespace Entity
 		{
-				Engine::MathUtilities::PlayerShip::PlayerShip()
+				PlayerShip::PlayerShip()
 				{}
 				//constructor
 
-				Engine::MathUtilities::PlayerShip::PlayerShip(const std::vector<Engine::MathUtilities::Vector2> points, const int width, const int height)
+				PlayerShip::PlayerShip(const std::vector<Engine::MathUtilities::Vector2> points, const int width, const int height)
 					: m_velocity(Engine::MathUtilities::Vector2())
 				{
 					m_points = points;
 					m_radius = 0.0f;
 					m_angle = 0.0f;
-					m_angleRad = Engine::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
+					m_angleRad = Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
 					m_width = width + 50;
 					m_height = height + 50;
 				}
@@ -25,7 +25,7 @@
 
 
 				// DESTRUCTOR
-				Engine::MathUtilities::PlayerShip::~PlayerShip()
+				PlayerShip::~PlayerShip()
 				{}
 
 				void PlayerShip::Render(unsigned int mode, Engine::MathUtilities::Vector2 position, float angle)
@@ -83,7 +83,7 @@
 				// RENDER
 				void PlayerShip::Render()
 				{
-					m_angleRad = Engine::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
+					m_angleRad = Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
 
 					Render(GL_LINE_LOOP, m_position, m_angle);
 				}
@@ -120,25 +120,34 @@
 				// APPLY IMPULSE
 				void PlayerShip::ApplyImpulse()
 				{
-					m_velocity += Impulse();
+					//m_velocity += Impulse();
+					Impulse();
 				}
 
 				// IMPULSE
-				Engine::MathUtilities::Vector2 PlayerShip::Impulse()
+				/*Engine::MathUtilities::Vector2 PlayerShip::Impulse()
 				{
 					float impulse = (m_thrust / m_mass);
 					float x = impulse * std::cosf(m_angleRad);
 					float y = impulse * std::sinf(m_angleRad);
 
 					return Engine::MathUtilities::Vector2(x, y);
-				}
+				}*/
 
+				void PlayerShip::Impulse() 
+				{
+					float impulse = (m_thrust / m_mass);
+					float x = impulse * std::cosf(m_angleRad);
+					float y = impulse * std::sinf(m_angleRad);
+
+					m_velocity = Engine::MathUtilities::Vector2(x, y);
+				}
 				// ROTATE
-				void PlayerShip::Rotate(float angl)
+				void PlayerShip::Rotate(float angle)
 				{
 					// Updating angle
-					m_angle += angl;
-					m_angleRad = Engine::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
+					m_angle += angle;
+					m_angleRad = Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
 				}
 
 			}

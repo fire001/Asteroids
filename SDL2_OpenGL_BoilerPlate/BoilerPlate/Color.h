@@ -1,4 +1,5 @@
 #pragma once
+#include "vector3.h"
 
 namespace Colors
 {
@@ -10,10 +11,6 @@ namespace Colors
 		~Color();
 
 	private:
-		int red;
-		int blue;
-		int green;
-		int alpha;
-
+		Engine::Math::Vector3 m_color;
 	};
 }

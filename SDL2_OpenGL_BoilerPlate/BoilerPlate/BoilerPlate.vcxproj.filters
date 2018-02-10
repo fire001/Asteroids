@@ -11,7 +11,6 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
     <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Models.cpp" />
     <ClCompile Include="Vector4.cpp" />
   </ItemGroup>
@@ -24,7 +23,6 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="Vector2.hpp" />
-    <ClInclude Include="Game.hpp" />
     <ClInclude Include="Models.hpp" />
     <ClInclude Include="Vector4.hpp" />
   </ItemGroup>

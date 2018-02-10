@@ -173,7 +173,6 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Color.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtilities.cpp" />
     <ClCompile Include="Models.cpp" />
@@ -188,7 +187,6 @@ copy /Y "$(SolutionDir)\Externals\SDL2-2.0.4\lib\x64\SDL2.dll" "$(TargetDir)SDL2
   <ItemGroup>
     <ClInclude Include="App.hpp" />
     <ClInclude Include="Color.h" />
-    <ClInclude Include="Game.hpp" />
     <ClInclude Include="MathUtilities.hpp" />
     <ClInclude Include="Models.hpp" />
     <ClInclude Include="PlayerShip.h" />
