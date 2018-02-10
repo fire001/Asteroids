@@ -153,7 +153,6 @@ namespace Engine
 
 		// Update code goes here
 		//
-		m_player->Update(DESIRED_FRAME_RATE);
 
 		double endTime = m_timer->GetElapsedTimeInSeconds();
 		double nextTimeFrame = startTime + DESIRED_FRAME_TIME;
@@ -173,7 +172,7 @@ namespace Engine
 
 	void App::Render()
 	{
-		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
+		glClearColor(0.50, 0.50f, 1.f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glBegin(GL_LINE_LOOP);

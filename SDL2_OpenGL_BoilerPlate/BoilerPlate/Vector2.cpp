@@ -2,11 +2,14 @@
 #include <iostream>
 #include <cmath>
 
+
 namespace Engine
 {
 	namespace MathUtilities
 	{
+		Vector2 Vector2::origin = Vector2();
 
+		//constructor
 		Vector2::Vector2()
 			: m_x(0.0f)
 			, m_y(0.0f)
