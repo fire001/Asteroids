@@ -6,27 +6,6 @@ namespace Engine
 {
 	namespace Math
 	{
-		Vector4::Vector4(const Vector2& v2)
-		
-			: m_x(v2.m_x)
-			, m_y(v2.m_y)
-			, m_z(0.0f)
-			, m_w(0.0f)
-			, m_lenght(0.0f)
-			{
-				Lenght();
-			}
-
-		Vector4::Vector4(const Vector3& v3)
-			: m_x(v3.m_x)
-			, m_y(v3.m_y)
-			, m_z(v3.m_z)
-			, m_w(0.0f)
-			, m_lenght(0.0f)
-		{
-			Lenght();
-		}
-
 		Vector4::Vector4()
 			: m_x(0.0f)
 			, m_y(0.0f)
@@ -55,14 +34,35 @@ namespace Engine
 			Length();
 		}
 
-		float Vector4::Length() const
+		Vector4::Vector4(const Vector2& vec2)
+		
+			: m_x(vec2.m_x)
+			, m_y(vec2.m_y)
+			, m_z(0.0f)
+			, m_w(0.0f)
+			, m_lenght(0.0f)
+			{
+				Length();
+			}
+
+		Vector4::Vector4(const Vector3& vec3)
+			: m_x(vec3.m_x)
+			, m_y(vec3.m_y)
+			, m_z(vec3.m_z)
+			, m_w(0.0f)
+			, m_lenght(0.0f)
+		{
+			Length();
+		}
+
+		float Vector4::Length() 
 		{
 			float squareLenght = std::sqrt(m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w );
 			//m_length = squareLenght;
 			return squareLenght;
 		}
 
-		float Vector4::SquaredLenght() const
+		float Vector4::SquaredLenght() 
 		{
 			return m_x * m_x + m_y * m_y + m_z * m_z + m_w * m_w;
 		}

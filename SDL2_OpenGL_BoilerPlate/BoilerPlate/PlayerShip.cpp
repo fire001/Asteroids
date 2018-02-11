@@ -12,7 +12,7 @@
 
 				PlayerShip::PlayerShip( int width,  int height)
 				{
-					m_position = new Engine::MathUtilities::Vector2(Engine::MathUtilities::Vector2::origin);
+					m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
 					m_width = width / 1.0f;
 					m_height = height / 1.0f;
 				}
@@ -48,7 +48,7 @@
 
 
 				// MOVE FORWARD
-				void PlayerShip::MoveForward(const Engine::MathUtilities::Vector2 a)
+				void PlayerShip::MoveForward(const Engine::Math::Vector2 a)
 				{
 					float x = m_position->m_x + a.m_x;
 					float y = m_position->m_y + a.m_y;

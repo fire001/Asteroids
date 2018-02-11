@@ -23,7 +23,7 @@ namespace Engine
 				*	  PUBLIC FUNCTIONS
 				============================*/
 			
-				void MoveForward(const Engine::MathUtilities::Vector2);
+				void MoveForward(const Engine::Math::Vector2);
 				void RotateLeft();
 				void RotateRight();
 				void Render();
@@ -33,8 +33,8 @@ namespace Engine
 				/*============================
 				*		  MEMBERS
 				============================*/
-				Engine::MathUtilities::Vector2*	m_position;
-				Engine::MathUtilities::Vector2*	m_velocity;
+				Engine::Math::Vector2*	m_position;
+				Engine::Math::Vector2*	m_velocity;
 				float m_width;
 				float m_height;
 

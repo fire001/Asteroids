@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-	namespace MathUtilities
+	namespace Math
 	{
 		Vector2 Vector2::origin = Vector2();
 

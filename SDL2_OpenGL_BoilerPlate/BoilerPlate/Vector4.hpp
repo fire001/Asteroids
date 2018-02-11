@@ -2,7 +2,8 @@
 
 #define  Vector4_HPP_
 #include <iostream>
-
+#include "Vector2.hpp"
+#include "Vector3.h"
 namespace Engine
 {
 	namespace Math
@@ -12,6 +13,8 @@ namespace Engine
 		class Vector4
 		{
 		public:
+
+			static Vector4 origin;
 
 			//CONSTRUCTORS
 
@@ -45,17 +48,11 @@ namespace Engine
 			float m_z;
 			float m_w;
 			float m_lenght;
-
-			// por si las moscas 
-			float x;
-			float y;
-			float z;
-			float w;
-
+			
 
 			//PUBLIC FUNCTIONS	
-			float Length() const;
-			float SquaredLenght() const;
+			float Length();
+			float SquaredLenght();
 			Vector4 Normalizer();
 
 			
