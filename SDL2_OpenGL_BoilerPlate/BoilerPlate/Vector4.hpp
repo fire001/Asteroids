@@ -1,12 +1,14 @@
 #pragma once
 
-#define  Vector3_H_
+#define  Vector4_HPP_
 #include <iostream>
 
 namespace Engine
 {
 	namespace Math
 	{
+		struct Vector2;
+		struct Vector3;
 		class Vector4
 		{
 		public:
@@ -15,6 +17,8 @@ namespace Engine
 
 			Vector4();
 			Vector4(float uniform);
+			Vector4(const Vector2&);
+			Vector4(const Vector3&);
 			Vector4(float x, float y, float z, float w);
 
 

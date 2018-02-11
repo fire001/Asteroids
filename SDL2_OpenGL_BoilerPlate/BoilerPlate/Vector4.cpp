@@ -6,6 +6,26 @@ namespace Engine
 {
 	namespace Math
 	{
+		Vector4::Vector4(const Vector2& v2)
+		
+			: m_x(v2.m_x)
+			, m_y(v2.m_y)
+			, m_z(0.0f)
+			, m_w(0.0f)
+			, m_lenght(0.0f)
+			{
+				Lenght();
+			}
+
+		Vector4::Vector4(const Vector3& v3)
+			: m_x(v3.m_x)
+			, m_y(v3.m_y)
+			, m_z(v3.m_z)
+			, m_w(0.0f)
+			, m_lenght(0.0f)
+		{
+			Lenght();
+		}
 
 		Vector4::Vector4()
 			: m_x(0.0f)

@@ -14,6 +14,7 @@ namespace Engine
 
 		Vector3();
 		Vector3(float uniform);
+		Vector3(Engine::MathUtilities::Vector2)
 		Vector3(float x, float y, float z);
 
 
