@@ -11,10 +11,9 @@ namespace Engine
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
 	const float movingUnit = 5.0f;
-	
+
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
-		
 		, m_width(width)
 		, m_height(height)
 		, m_nUpdates(0)
@@ -25,7 +24,6 @@ namespace Engine
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
 		m_player = new Engine::Entity::PlayerShip(m_width, m_height);
-		
 	}
 
 	App::~App()
@@ -183,6 +181,19 @@ namespace Engine
 	void App::Render()
 	{
 		m_player->Render();
+		glClearColor(0.50, 0.50f, 1.f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glBegin(GL_LINE_LOOP);
+		glVertex2f(0.0f, 20.f);
+		glVertex2f(12.0f, -10.0f);
+		glVertex2f(6.0f, -4.0f);
+		glVertex2f(-6.0f, -4.0f);
+		glVertex2f(-12.0f, -10.0f);
+		glEnd();
+
+		SDL_GL_SwapWindow(m_mainWindow);
+		
 	}
 
 	bool App::SDLInit()
