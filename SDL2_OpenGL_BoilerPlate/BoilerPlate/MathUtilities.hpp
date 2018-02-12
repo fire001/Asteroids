@@ -1,36 +1,26 @@
 #pragma once
-
-#include <math.h>
+#ifndef _MATH_HPP_
+#define _MATH_HPP_
+#include <cmath>
 #include <iostream>
-#include <stdio.h>
 #include <algorithm>
 #include <cstdlib>
-namespace Math {
-	class MathUtilities
-	{
-	public:
-		float intToFloat;
-		int floatToInt;
+#include <string>
 
-		MathUtilities();
-		~MathUtilities();
+namespace Math {
+	namespace MathUtilities
+	{
+		const float PI = 3.1415926535897323846f;
 
 		float Converter(int);
 		float Round(int);
 		float PoweOfTwo(int);
 		template<class T> T Clamp(T);
-		float Angle(double);
+		float ConvertRadToDegrees(float);
+		 float ConvertDegreesToRad(float);
 		float Distance(double);
 
-	private:
-		//Members
-
-		int redondear;
-		int num;
-		int IntToFloat;
-		//float floatToInt;
-		double radians;
-		double degree;
-		double x;
+		
 	};
 }
+#endif // !_MATH_HPP_

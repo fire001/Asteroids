@@ -10,6 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
+	const float movingUnit = 5.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -19,8 +20,10 @@ namespace Engine
 		, m_timer(new TimeManager)
 		, m_mainWindow(nullptr)
 	{
+		
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
+		m_player = new Engine::Entity::PlayerShip(m_width, m_height);
 	}
 
 	App::~App()
@@ -81,30 +84,35 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_W:
-			m_player->m_player->MoveForward();
+			m_player->MoveForward(Engine::Math::Vector2(0.0F, 10.0F));
+			m_player->MoveForward(Engine::Math::Vector2(0.0F, movingUnit));
 			break;
 		case SDL_SCANCODE_A:
-			m_player->m_player->MoveLeft();
+			m_player->MoveForward(Engine::Math::Vector2(-10.0f, 0.0f));
+			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
 			break;
 		case SDL_SCANCODE_S:
 			//NOTHING
 			break;
 		case SDL_SCANCODE_D:
-			m_player->m_player->MoveRight();
+			m_player->MoveForward(Engine::Math::Vector2(10.0f, 0.0f));
+			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
 			break;
+			/*
 		case SDL_SCANCODE_UP:
-			m_player->m_player->MoveForward();
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_LEFT:
-			m_player->m_player->MoveLeft();
+			m_player->RotateLeft();
 			break;
 		case SDL_SCANCODE_RIGHT:
-			m_player->m_player->MoveRight();
+			m_player->RotateRight();
 			break;
+			*/
 		case SDL_SCANCODE_DOWN:
 			break;
 		case SDL_SCANCODE_SPACE:
-			m_player->m_player->Shoot();
+			//m_player->Shoot();
 			break;
 		case SDL_SCANCODE_P:
 			//Do nothing
@@ -128,7 +136,7 @@ namespace Engine
 		case SDL_SCANCODE_D:
 			break;
 		case SDL_SCANCODE_P:
-			m_player->ChangePlayerModel();
+			//m_player->ChangePlayerModel();
 			break;
 		case SDL_SCANCODE_UP:
 			break;
@@ -172,17 +180,20 @@ namespace Engine
 
 	void App::Render()
 	{
-		glClearColor(0.1f, 0.1f, 0.15f, 1.0f);
+		m_player->Render();
+		glClearColor(0.50, 0.50f, 1.f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glBegin(GL_LINE_LOOP);
-		glVertex2f(50.0, 50.0);
-		glVertex2f(50.0, -50.0);
-		glVertex2f(-50.0, -50.0);
-		glVertex2f(-50.0, 50.0);
+		glVertex2f(0.0f, 20.f);
+		glVertex2f(12.0f, -10.0f);
+		glVertex2f(6.0f, -4.0f);
+		glVertex2f(-6.0f, -4.0f);
+		glVertex2f(-12.0f, -10.0f);
 		glEnd();
 
 		SDL_GL_SwapWindow(m_mainWindow);
+		
 	}
 
 	bool App::SDLInit()

@@ -9,6 +9,7 @@
 // Asteroids
 #include "SDLEvent.hpp"
 #include "TimeManager.hpp"
+#include "PlayerShip.h"
 
 namespace Engine
 {
@@ -56,6 +57,7 @@ namespace Engine
 
 
 		//MEMBERS
+		Engine::Entity::PlayerShip*         m_player;
 		int									m_width;
 		int									m_height;
 		int									m_nUpdates;
