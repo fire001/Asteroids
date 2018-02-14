@@ -10,7 +10,7 @@
 namespace Math {
 	namespace MathUtilities
 	{
-		const float PI = 3.1415926535897323846f;
+		static float PI = 3.1415926535897323846f;
 
 		float Converter(int);
 		float Round(int);
