@@ -37,7 +37,7 @@ namespace Engine
 				Engine::Math::Vector2*	m_velocity;
 				float m_width;
 				float m_height;
-
+				float m_angle;
 			};
 		}
 	}

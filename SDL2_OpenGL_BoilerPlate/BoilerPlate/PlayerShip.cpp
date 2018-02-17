@@ -59,10 +59,16 @@
 
 				void PlayerShip::RotateLeft()
 				{
+					float new_angle = 5.0f;
+					m_angle += new_angle;
+
+					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
 				}
 
 				void PlayerShip::RotateRight()
 				{
+					float new_angle = -5.0f;
+					m_angle += new_angle;
 				}
 			
 			
