@@ -47,6 +47,7 @@ namespace Engine
 			float m_y;
 			float m_x;
 			float m_lenght;
+			float m_position;
 
 
 

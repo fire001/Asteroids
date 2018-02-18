@@ -10,7 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
-	const float movingUnit = 5.0f;
+	float movingUnit = 10.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -84,19 +84,16 @@ namespace Engine
 		switch (keyBoardEvent.keysym.scancode)
 		{
 		case SDL_SCANCODE_W:
-			m_player->MoveForward(Engine::Math::Vector2(0.0F, 10.0F));
-			m_player->MoveForward(Engine::Math::Vector2(0.0F, movingUnit));
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_A:
-			m_player->MoveForward(Engine::Math::Vector2(-10.0f, 0.0f));
-			m_player->MoveForward(Engine::Math::Vector2(-movingUnit, 0.0f));
+			m_player->RotateLeft();
 			break;
 		case SDL_SCANCODE_S:
-			//NOTHING
+			m_player->MoveForward();
 			break;
 		case SDL_SCANCODE_D:
-			m_player->MoveForward(Engine::Math::Vector2(10.0f, 0.0f));
-			m_player->MoveForward(Engine::Math::Vector2(movingUnit, 0.0f));
+			m_player->RotateRight();
 			break;
 			/*
 		case SDL_SCANCODE_UP:

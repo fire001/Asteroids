@@ -1,54 +1,55 @@
 #include "MathUtilities.hpp"
 #include <iostream>
 
+namespace Engine {
 
-namespace Math {
-	namespace MathUtilities {
+	namespace Math {
+		namespace MathUtilities {
 
-		float Converter(int IntToFloat)
-		{
-			return (float)roundf(IntToFloat);
-		}
-
-
-		float Round(int x)
-		{
-			return (x / 2) * 2;
-		}
-
-		float PoweOfTwo(int num)
-		{
-			while (((num % 2) == 0) && num > 1)
-				num /= 2;
-			return (num == 1);
-		}
+			float Converter(int IntToFloat)
+			{
+				return (float)roundf(IntToFloat);
+			}
 
 
-		template<class T>
-		T Clamp(T)
-		{
+			float Round(int x)
+			{
+				return (x / 2) * 2;
+			}
 
-			int max = 255, min = 0;
-			int clamp;
-			clamp = x < min ? min : x;
-			return clamp > max ? max : clamp;
-		}
+			float PoweOfTwo(int num)
+			{
+				while (((num % 2) == 0) && num > 1)
+					num /= 2;
+				return (num == 1);
+			}
 
 
-		float ConvertRadToDegrees(float angleInRadians)
-		{
-			return angleInRadians * (PI / 180);
-		}
+			template<class T>
+			T Clamp(T)
+			{
 
-		float ConvertDegreesToRad(float angleInDegrees)
-		{
-			return angleInDegrees * (180 / PI);
-		}
+				int max = 255, min = 0;
+				int clamp;
+				clamp = x < min ? min : x;
+				return clamp > max ? max : clamp;
+			}
 
-		float Distance(double)
-		{
-			return 0.0;
+
+			float ConvertRadToDegrees(float angleInRadians)
+			{
+				return angleInRadians * (PI / 180);
+			}
+
+			float ConvertDegreesToRad(float angleInDegrees)
+			{
+				return angleInDegrees * (180 / PI);
+			}
+
+			float Distance(double)
+			{
+				return 0.0;
+			}
 		}
 	}
 }
-
