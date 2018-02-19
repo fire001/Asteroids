@@ -26,7 +26,7 @@ namespace Herramientas
 		{
 		public:
 			Entidades();
-			Entidades(int width, int height);
+			Entidades(int , int );
 
 			virtual void Render(unsigned int, Engine::Math::Vector2, Engine::Math::Vector3, float);
 			static  void Render(unsigned int, std::vector<Engine::Math::Vector2>, Engine::Math::Vector2 position, Engine::Math::Vector3);

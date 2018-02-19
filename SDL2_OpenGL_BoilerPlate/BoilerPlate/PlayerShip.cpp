@@ -96,8 +96,11 @@
 				{
 					float new_angle = -5.0f;
 					m_angle += new_angle;
+<<<<<<< HEAD
 
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
+=======
+>>>>>>> master
 				}
 
 				void Engine::Entity::PlayerShip::ResetOrientation()
