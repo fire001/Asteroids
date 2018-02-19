@@ -27,24 +27,43 @@ namespace Herramientas
 		public:
 			Entidades();
 			Entidades(int width, int height);
-			~Entidades();
-			void translate(Engine::Math::Vector2 pos) { m_position = pos; };
-			void Update();
-			void Render();
+
+			virtual void Render(unsigned int, Engine::Math::Vector2, Engine::Math::Vector3, float);
+			static  void Render(unsigned int, std::vector<Engine::Math::Vector2>, Engine::Math::Vector2 position, Engine::Math::Vector3);
+			void translate(Engine::Math::Vector2 position);
+			void Update(float halfTime);
+			float Render();
+			float warping();
+			float rotate(float);
 			float warping(float, float, float);
 
-		private:
+			Engine::Math::Vector2 getPosition() const { return m_position; };
+			float getAngle() const { return m_angle; };
+			Engine::Math::Vector2 getPosition() const { return m_position; };
 
+		
+		protected:
+
+			//funtions
+			Engine::Math::Vector2 Impulse();
+			virtual void ApplyImpulse() { m_velocity += Impulse(); };
+			
+
+		private:
 			//members
-			float m_position;
-			float m_mass;
-			float m_angle;
-			float m_angleInRads;
-			int		m_width;
-			int		m_height;
+			float						m_position;
+			float						m_mass;
+			float						m_angle;
+			float						m_angleInRads;
+			int							m_width;
+			int							m_height;
 			Engine::Math::Vector2		m_velocity;
 			Engine::Math::Vector2		m_position;
 			Engine::Math::Vector3		m_color;
+			float						m_maxwidth;
+			float						m_minwidth;
+			float						m_maxheight;
+			float						m_minheight;
 		};
 
 	}

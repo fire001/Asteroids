@@ -22,7 +22,13 @@ namespace Engine
 			float ConvertDegreesToRad(float);
 			float Distance(double);
 
+			template<typename T>
+			T RandomInRange(T min, T max) { return static_cast<T>(min + (rand() % (int)(max - min + 1))); }
 
+			template<typename T>
+			T RandomInRange2(T min, T max) { return min + (max - min) * (rand() / static_cast<T>(RAND_MAX)); }
+
+			float m_angleInRads;
 		};
 	}
 }

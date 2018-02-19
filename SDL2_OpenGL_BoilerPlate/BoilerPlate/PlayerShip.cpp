@@ -2,6 +2,7 @@
 #include "SDL2\SDL_opengl.h"
 #include "Vector2.hpp"
 #include "MathUtilities.hpp"
+#include "Entidades.hpp"
 
 	namespace Engine
 	{
@@ -11,12 +12,17 @@
 				//constructor
 
 				PlayerShip::PlayerShip( int width,  int height)
+					
 				{
-					m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin);
+					m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
+					m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
 					m_angle = (0.0f);
-					m_width = width / 2.0f;
-					m_height = height / 2.0f;
+					m_width = width + 50;
+					m_height = height +50;
 					m_thruster = (false);
+					m_radius = 0.f;
+					m_velocity = (Engine::Math::Vector2());
+				   
 
 				}
 				
@@ -27,7 +33,7 @@
 					glLoadIdentity();
 
 					// Translation to current position
-					glTranslatef(m_position->m_x , m_position->m_y , 0.0f);
+					glTranslatef(m_position.m_x , m_position.m_y , 0.0f);
 
 					// Rotation to current angle
 					 glRotatef(m_angle, 0.0f, 0.0f, 1.0f);
@@ -46,12 +52,17 @@
 					glEnd();
 				}
 
-				void PlayerShip::Update()
+				void Engine::Entity::PlayerShip::Update(float)
 				{
+					// Calculating new position
+					Engine::Math::Vector2 pos = m_position + m_velocity;
+
+					// Translation to new position
+					//translate(pos);
 
 				}
 
-				float PlayerShip::warping(float m_x, float min, float max)
+				float Engine::Entity::PlayerShip::warping(float m_x, float min, float max)
 				{
 					if (m_x < min) return max - (min - m_x);
 					if (m_x > max) return min + (m_x - max);
@@ -64,17 +75,16 @@
 
 
 				// MOVE FORWARD
-				void PlayerShip::MoveForward()
+				void Engine::Entity::PlayerShip::MoveForward()
 				{
 					/*float x = m_position->m_x + a.m_x;
 					float y = m_position->m_y + a.m_y;*/
 
 					m_thruster = true;
-					m_position->m_x += warping(m_x, min, max) 
-					m_position->m_y += y;
+					m_position.m_x += warping();
 				}
 
-				void PlayerShip::RotateLeft()
+				void Engine::Entity::PlayerShip::RotateLeft()
 				{
 					float new_angle = 5.0f;
 					m_angle += new_angle;
@@ -82,22 +92,25 @@
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
 				}
 
-				void PlayerShip::RotateRight()
+				void Engine::Entity::PlayerShip::RotateRight()
 				{
 					float new_angle = -5.0f;
 					m_angle += new_angle;
 
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
 				}
-			
-			
+
+				void Engine::Entity::PlayerShip::ResetOrientation()
+				{
+					m_angle = 0.f;
+					m_angleInRads = 0.f;
+				};
 
 				// APPLY IMPULSE
-				/*void PlayerShip::ApplyImpulse()
+				/*void PlayerShip::applyImpulse()
 				{
-					//m_velocity += Impulse();
-					Impulse();
-				}*/
+					m_velocity += impulse();
+				 }*/
 
 				/*void PlayerShip::Impulse() 
 				{

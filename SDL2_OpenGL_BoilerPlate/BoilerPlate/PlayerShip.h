@@ -4,13 +4,13 @@
 #include "Vector2.hpp"
 #include "Entidades.hpp"
 #include "MathUtilities.hpp"
-
+#include "App.hpp"
 
 namespace Engine
 {
 	namespace Entity
 	{
-		class PlayerShip::Entidades
+		class PlayerShip
 		{
 		public:
 
@@ -25,11 +25,12 @@ namespace Engine
 			*	  PUBLIC FUNCTIONS
 			============================*/
 
-			void MoveForward(/*const Engine::Math::Vector2*/);
+			void MoveForward(); //{ applyImpulse(); };
 			void RotateLeft();
 			void RotateRight();
 			void Render();
-			void Update();
+			void Update(float);
+			void ResetOrientation();
 			float warping(float, float, float);
 
 		private:
@@ -37,16 +38,19 @@ namespace Engine
 			/*============================
 			*		  MEMBERS
 			============================*/
-			Engine::Math::Vector2*	m_position;
-			Engine::Math::Vector2*	m_velocity;
+			Engine::Math::Vector2	m_position;
+			Engine::Math::Vector2	m_velocity;
+
 			float m_width;
 			float m_height;
 			float m_angle;
 			float m_mass;
 			float m_angle;
+			float m_angleInRads;
 			bool m_thruster;
 			bool m_moving;
-			void applyImpulse() override { m_velocity += impulse(); };
+			float m_radius;
+			void ApplyImpulse() override { m_velocity += Impulse(); };
 
 		};
 	}
