@@ -11,7 +11,7 @@
 				
 				//constructor
 
-				PlayerShip::PlayerShip( int width,  int height)
+				Engine::Entity::PlayerShip::PlayerShip( int width,  int height)
 					
 				{
 					m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
@@ -19,14 +19,14 @@
 					m_angle = (0.0f);
 					m_width = width + 50;
 					m_height = height +50;
-					m_thruster = (false);
+					m_thrust = (false);
 					m_radius = 0.f;
-					m_velocity = (Engine::Math::Vector2());
+					
 				   
 
 				}
 				
-				void PlayerShip::Render()
+				void Engine::Entity::PlayerShip::Render()
 				{
 
 					// Reset Matrix
@@ -36,7 +36,7 @@
 					glTranslatef(m_position.m_x , m_position.m_y , 0.0f);
 
 					// Rotation to current angle
-					 glRotatef(m_angle, 0.0f, 0.0f, 1.0f);
+					 glRotatef(m_angle, 0.0f, 0.0f, 0.0f);
 
 
 					// Rendering
@@ -55,10 +55,10 @@
 				void Engine::Entity::PlayerShip::Update(float)
 				{
 					// Calculating new position
-					Engine::Math::Vector2 pos = m_position + m_velocity;
+					Engine::Math::Vector2 m_position = m_position + m_velocity;
 
 					// Translation to new position
-					//translate(pos);
+					//translate(m_position);
 
 				}
 
@@ -80,8 +80,8 @@
 					/*float x = m_position->m_x + a.m_x;
 					float y = m_position->m_y + a.m_y;*/
 
-					m_thruster = true;
-					m_position.m_x += warping();
+					m_thrust = true;
+					//m_position.m_x += warping();
 				}
 
 				void Engine::Entity::PlayerShip::RotateLeft()
@@ -96,39 +96,41 @@
 				{
 					float new_angle = -5.0f;
 					m_angle += new_angle;
-<<<<<<< HEAD
+
 
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
-=======
->>>>>>> master
+
 				}
 
 				void Engine::Entity::PlayerShip::ResetOrientation()
 				{
-					m_angle = 0.f;
-					m_angleInRads = 0.f;
+					m_angle = 0.0f;
+					m_angleInRads = 0.0f;
 				};
 
 				// APPLY IMPULSE
-				/*void PlayerShip::applyImpulse()
+				/*void PlayerShip::ApplyImpulse()
 				{
-					m_velocity += impulse();
-				 }*/
+					m_velocity += Engine::Math::Vector2 Impulse();
+					//return Impulse();
+				}*/
 
-				/*void PlayerShip::Impulse() 
+				void PlayerShip::Impulse() 
 				{
 					float impulse = (m_thrust / m_mass);
-					float x = impulse * std::cosf(m_angleRad);
-					float y = impulse * std::sinf(m_angleRad);
-					m_velocity += Engine::MathUtilities::Vector2( x , y);
-					
-				}*/
+					float x = impulse * std::cosf(m_angleInRads);
+					float y = impulse * std::sinf(m_angleInRads);
+					Engine::Math::Vector2(x, y) += m_velocity;
+
+					return Impulse();
+				
+				}
 				// ROTATE
 				/*void PlayerShip::Rotate(float angle)
 				{
 					// Updating angle
 					m_angle += angle;
-					m_angleRad = Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
+					m_angleInRads = Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
 				}
 				*/
 			}

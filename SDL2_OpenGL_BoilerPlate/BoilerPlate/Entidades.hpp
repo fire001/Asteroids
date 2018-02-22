@@ -11,6 +11,7 @@
 #include "MathUtilities.hpp"
 #include "Vector2.hpp"
 #include "Vector3.h"
+#include "PlayerShip.h"
 
 namespace Herramientas
 {
@@ -32,9 +33,9 @@ namespace Asteroids
 		Entidades();
 		Entidades(int, int);
 
-		virtual void Render(unsigned int, Engine::Math::Vector2, Engine::Math::Vector3, float);
-		static  void Render(unsigned int, std::vector<Engine::Math::Vector2>, Engine::Math::Vector2 position, Engine::Math::Vector3);
-		void translate(Engine::Math::Vector2 position);
+		//virtual void Render(unsigned int, Engine::Math::Vector2, Engine::Math::Vector3, float);
+		//static  void Render(unsigned int, std::vector<Engine::Math::Vector2>, Engine::Math::Vector2 m_position, Engine::Math::Vector3);
+		void translate(Engine::Math::Vector2 m_position);
 		void Update(float halfTime);
 		float Render();
 		float warping();
@@ -43,8 +44,6 @@ namespace Asteroids
 
 		Engine::Math::Vector2 getPosition() const { return m_position; };
 		float getAngle() const { return m_angle; };
-		Engine::Math::Vector2 getPosition() const { return m_position; };
-
 
 	protected:
 

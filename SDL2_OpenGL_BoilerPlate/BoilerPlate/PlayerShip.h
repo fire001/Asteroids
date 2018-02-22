@@ -10,7 +10,7 @@ namespace Engine
 {
 	namespace Entity
 	{
-<<<<<<< HEAD
+
 		class PlayerShip
 		{
 		public:
@@ -18,7 +18,7 @@ namespace Engine
 			/*============================
 			*			CTOR
 			============================*/
-			PlayerShip(int, int);
+			Engine::Entity::PlayerShip::PlayerShip(int, int);
 
 
 
@@ -32,60 +32,31 @@ namespace Engine
 			void Render();
 			void Update(float);
 			void ResetOrientation();
-			float warping(float, float, float);
+			void Impulse();
+			float warping(float m_x, float min, float max);
 
+				
 		private:
 
 			/*============================
 			*		  MEMBERS
 			============================*/
 			Engine::Math::Vector2	m_position;
-			Engine::Math::Vector2	m_velocity;
+			float	m_velocity;
 
 			float m_width;
 			float m_height;
 			float m_angle;
 			float m_mass;
-			float m_angle;
 			float m_angleInRads;
-			bool m_thruster;
-			bool m_moving;
+			float m_thrust;
+			
 			float m_radius;
-			void ApplyImpulse() override { m_velocity += Impulse(); };
+			
+			
 
 		};
-=======
-			class PlayerShip
-			{
-			public:
 
-				/*============================
-				*			CTOR
-				============================*/
-				PlayerShip(int, int);
-				
-
-				/*============================
-				*	  PUBLIC FUNCTIONS
-				============================*/
 			
-				void MoveForward(const Engine::Math::Vector2);
-				void RotateLeft();
-				void RotateRight();
-				void Render();
-				void Update();	
-
-			private:
-				/*============================
-				*		  MEMBERS
-				============================*/
-				Engine::Math::Vector2*	m_position;
-				Engine::Math::Vector2*	m_velocity;
-				float m_width;
-				float m_height;
-				float m_angle;
-			};
 		}
->>>>>>> master
 	}
-}

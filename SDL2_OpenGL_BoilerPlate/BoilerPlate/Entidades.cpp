@@ -4,6 +4,8 @@
 #include "Vector3.h"
 #include "MathUtilities.hpp"
 
+
+
 namespace Asteroids
 {
 	class Entidades
@@ -12,14 +14,13 @@ namespace Asteroids
 
 		Entidades::Entidades(int width, int height)
 		{
-			m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
-			m_mass = 0.5f;
-
-			m_maxwidth = width / 2.0f;
-			m_minwidth = -width / 2.0f;
-			m_maxheight = height / 2.0f;
-			m_minheight = -height / 2.0f;
-		}
+			m_position = new Engine::Math::Vector2(Engine::Math::Vector2::origin)
+			 m_mass = 0.5f;
+			 m_maxwidth = width / 2.0f;
+			 m_minwidth = -width / 2.0f;
+			 m_maxheight = height / 2.0f;
+			 m_minheight = -height / 2.0f;
+		};
 
 
 		float Entidades::Render()
@@ -27,7 +28,7 @@ namespace Asteroids
 			//Reset Matrix
 			//glLoadIdentity();
 			//Warpeo call
-			warping();
+			//warping();
 			//translate to current position
 			//translate(m_position.m_x , m_position.m_y, 0.0f);
 			//rotation
@@ -39,14 +40,14 @@ namespace Asteroids
 		}
 
 
-		void Entidades::Update(float halfTime)
+		/*void Asteroids::Entidades::Update(float halfTime)
 		{
 			m_position.m_x += m_velocity.m_x * static_cast<float>(halfTime);
 			m_position.m_y += m_velocity.m_y * static_cast<float>(halfTime);
 
 			m_position.m_x = warping(m_position.m_x, m_minwidth, m_maxwidth);
 			m_position.m_y = warping(m_position.m_y, m_minheight, m_maxheight);
-		}
+		}*/
 
 
 		float Entidades::rotate(float newAngle)
@@ -55,7 +56,8 @@ namespace Asteroids
 			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
 		}
 
-		float Entidades::warping(float m_x, float min, float max)
+		
+		float  Entidades::warping(float m_x, float min, float max)
 		{
 			if (m_x < min) return max - (min - m_x);
 			if (m_x > max) return min + (m_x - max);

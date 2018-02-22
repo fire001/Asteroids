@@ -10,6 +10,7 @@
 #include "SDLEvent.hpp"
 #include "TimeManager.hpp"
 #include "PlayerShip.h"
+#include "Asteroides.hpp"
 
 namespace Engine
 {
@@ -41,6 +42,7 @@ namespace Engine
 		bool Init();
 		void Update();
 		void Render();
+		void asterRender();
 	private:
 
 		//PRIVATE FUNCTIONS
@@ -54,8 +56,6 @@ namespace Engine
 		void OnKeyDown(SDL_KeyboardEvent keyBoardEvent) override;
 		void OnKeyUp(SDL_KeyboardEvent keyBoardEvent) override;
 
-
-
 		//MEMBERS
 		Engine::Entity::PlayerShip*         m_player;
 		int									m_width;
@@ -67,7 +67,7 @@ namespace Engine
 		SDL_GLContext						m_context;
 		GameState::State					m_state;
 		Engine::TimeManager*				m_timer;
-		
+		Asteroides::Entidades::Asteroides*	m_asteroids;
 	};
 }
 #endif /* GAME_HPP */

@@ -15,10 +15,12 @@ namespace Asteroides
 				void Update(float);
 			
 		private:
-			Engine::Math::Vector2* m_position;
-			float m_height;
-			float m_width;
-			float m_angle;
+			Engine::Math::Vector2*			m_position;
+			float							m_height;
+			float							m_width;
+			float							m_angle;
+			float							m_velocity;
+			
 
 		};
 	}
