@@ -57,7 +57,7 @@ namespace Engine
 		void OnKeyUp(SDL_KeyboardEvent keyBoardEvent) override;
 
 		//MEMBERS
-		Engine::Entity::PlayerShip*         m_player;
+ v		Entidades::Entity::PlayerShip*      m_player;
 		int									m_width;
 		int									m_height;
 		int									m_nUpdates;

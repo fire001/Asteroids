@@ -4,29 +4,29 @@
 #include "MathUtilities.hpp"
 #include "Entidades.hpp"
 
-	namespace Engine
+	namespace Entidades
 	{
 		namespace Entity
 		{
 				
 				//constructor
 
-				Engine::Entity::PlayerShip::PlayerShip( int width,  int height)
-					
-				{
-					m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
-					m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
-					m_angle = (0.0f);
-					m_width = width + 50;
-					m_height = height +50;
-					m_thrust = (false);
-					m_radius = 0.f;
-					
-				   
-
-				}
+			PlayerShip::PlayerShip(int width, int height)
+			{
+				m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
+				m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
+				m_angle = (0.0f);
+				m_width = (width + 50);
+				m_height = (height + 50);
+				m_thrust = (false);
+				m_radius = (0.0f);
+				m_rotate = (120);
+				m_mass = (1.0f);
+				m_x = (0);
+				m_y = (0);
+			}
 				
-				void Engine::Entity::PlayerShip::Render()
+				void PlayerShip::Render()
 				{
 
 					// Reset Matrix
@@ -52,7 +52,7 @@
 					glEnd();
 				}
 
-				void Engine::Entity::PlayerShip::Update(float)
+				void PlayerShip::Update(float)
 				{
 					// Calculating new position
 					Engine::Math::Vector2 m_position = m_position + m_velocity;
@@ -62,20 +62,24 @@
 
 				}
 
-				float Engine::Entity::PlayerShip::warping(float m_x, float min, float max)
+				float PlayerShip::warping(float m_x, float min, float max)
 				{
-					if (m_x < min) return max - (min - m_x);
-					if (m_x > max) return min + (m_x - max);
-
-					if (m_x < min) return -m_x;
-					if (m_x > max) return -m_x;
+					if (m_x < min)
+					{
+						return max - (min - m_x);
+					}
+					if (m_x > max)
+					{
+						return min + (m_x - max);
+					}
+					
 					return m_x;
 				}
 
 
 
 				// MOVE FORWARD
-				void Engine::Entity::PlayerShip::MoveForward()
+				void PlayerShip::MoveForward()
 				{
 					/*float x = m_position->m_x + a.m_x;
 					float y = m_position->m_y + a.m_y;*/
@@ -84,7 +88,7 @@
 					//m_position.m_x += warping();
 				}
 
-				void Engine::Entity::PlayerShip::RotateLeft()
+				void PlayerShip::RotateLeft()
 				{
 					float new_angle = 5.0f;
 					m_angle += new_angle;
@@ -92,7 +96,7 @@
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
 				}
 
-				void Engine::Entity::PlayerShip::RotateRight()
+				void PlayerShip::RotateRight()
 				{
 					float new_angle = -5.0f;
 					m_angle += new_angle;
@@ -102,20 +106,24 @@
 
 				}
 
-				void Engine::Entity::PlayerShip::ResetOrientation()
+				void PlayerShip::ResetOrientation()
 				{
 					m_angle = 0.0f;
 					m_angleInRads = 0.0f;
 				};
 
 				// APPLY IMPULSE
-				/*void PlayerShip::ApplyImpulse()
+				void PlayerShip::ApplyImpulse(float impulsem_x, float impulsem_y)
 				{
-					m_velocity += Engine::Math::Vector2 Impulse();
-					//return Impulse();
-				}*/
+					if (m_mass > 0)
+					{
+						m_velocity += (impulsem_x / m_mass)* cosf(ConvertDegreesToRad(m_rotate));
+						m_velocity += (impulsem_x / m_mass)* sinf(ConvertDegreesToRad(m_rotate));
+						//return Impulse();
+				}
+				}
 
-				void PlayerShip::Impulse() 
+				/*void PlayerShip::Impulse() 
 				{
 					float impulse = (m_thrust / m_mass);
 					float x = impulse * std::cosf(m_angleInRads);
@@ -124,14 +132,28 @@
 
 					return Impulse();
 				
-				}
-				// ROTATE
-				/*void PlayerShip::Rotate(float angle)
+				}*/
+
+				// collide
+				bool PlayerShip::CouldCollide() const
 				{
-					// Updating angle
-					m_angle += angle;
-					m_angleInRads = Math::MathUtilities::ConvertDegreesToRad(m_angle + m_angle_offset);
+					return m_state == NORMAL_STATE;
 				}
-				*/
+
+				bool PlayerShip::isColliding() const
+				{
+					return m_state == COLLIDED_STATE;
+				}
+				bool PlayerShip::DetectCollision(PlayerShip* playership)
+				{
+					float radiu = (m_radius + playership->m_radius);
+					bool collision = (radiu * radiu) >= Engine::Math::MathUtilities::CalculateSquareDistance(m_x, m_y, playership->m_x, playership->m_y);
+					if (collision)
+					{
+						m_state = COLLIDED_STATE;
+						playership->m_state = COLLIDED_STATE;
+					}
+				}
+				
 			}
 		}

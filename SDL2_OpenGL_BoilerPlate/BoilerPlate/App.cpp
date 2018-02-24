@@ -22,7 +22,7 @@ namespace Engine
 	{
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
-		m_player = new Engine::Entity::PlayerShip(m_width, m_height);
+		m_player = new Entidades::Entity::PlayerShip(m_width, m_height);
 	}
 
 	App::~App()

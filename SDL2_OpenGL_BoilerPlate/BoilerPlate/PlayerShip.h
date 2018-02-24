@@ -6,8 +6,10 @@
 #include "MathUtilities.hpp"
 #include "App.hpp"
 
-namespace Engine
+namespace Entidades
 {
+	enum PlayerState {NORMAL_STATE, COLLIDED_STATE, DELETE_STATE};
+	enum AsteroidsSize {NORMAL_SIZE = 0, MEDIUM_SIZE = 1, SMALL_SIZE = 2};
 	namespace Entity
 	{
 
@@ -18,7 +20,7 @@ namespace Engine
 			/*============================
 			*			CTOR
 			============================*/
-			Engine::Entity::PlayerShip::PlayerShip(int, int);
+			Entidades::Entity::PlayerShip::PlayerShip(int, int);
 
 
 
@@ -32,7 +34,10 @@ namespace Engine
 			void Render();
 			void Update(float);
 			void ResetOrientation();
-			void Impulse();
+			bool CouldCollide() const;
+			bool DetectCollision(PlayerShip* playership);
+			bool isColliding() const;
+			virtual void ApplyImpulse(float m_x, float m_y);
 			float warping(float m_x, float min, float max);
 
 				
@@ -50,8 +55,13 @@ namespace Engine
 			float m_mass;
 			float m_angleInRads;
 			float m_thrust;
-			
+			float m_rotate;
 			float m_radius;
+			float ConvertRadToDegrees(float);
+			float ConvertDegreesToRad(float);
+			float m_state;
+			float m_x;
+			float m_y;
 			
 			
 

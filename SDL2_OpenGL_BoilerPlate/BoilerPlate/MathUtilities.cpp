@@ -46,10 +46,13 @@ namespace Engine {
 				return angleInDegrees * (180 / PI);
 			}
 
-			float Distance(double)
+			float CalculateSquareDistance(float m_x1, float m_y1, float m_x2, float m_y2)
 			{
-				return 0.0;
+				float m_xdiff = m_x2 - m_x1;
+				float m_ydiff = m_y2 - m_x2;
+				return (m_xdiff * m_xdiff) + (m_ydiff * m_ydiff);
 			}
+
 		}
 	}
 }

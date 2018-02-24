@@ -17,10 +17,11 @@ namespace Herramientas
 {
 	const float Thrust = 1.25f;
 	const float angle_offset = 90.0f;
+	const float Drag = 0.9f;
 	// asteroides
 	const int Max_Points = 12;
-	const float Min_Size = 25.f;
-	const float Max_Size = 45.f;
+	const float MIN_SIZE = 25.f;
+	const float MAX_SIZE = 45.f;
 
 	// nave
 	const int Max_Ship_Speed = 10.f;
@@ -33,17 +34,13 @@ namespace Asteroids
 		Entidades();
 		Entidades(int, int);
 
-		//virtual void Render(unsigned int, Engine::Math::Vector2, Engine::Math::Vector3, float);
-		//static  void Render(unsigned int, std::vector<Engine::Math::Vector2>, Engine::Math::Vector2 m_position, Engine::Math::Vector3);
 		void translate(Engine::Math::Vector2 m_position);
 		void Update(float halfTime);
 		float Render();
-		float warping();
-		float rotate(float);
-		float warping(float, float, float);
-
-		Engine::Math::Vector2 getPosition() const { return m_position; };
-		float getAngle() const { return m_angle; };
+		float warping(float m_x, float min, float max);
+		float rotate(float newAngle);
+		//float warping(float, float, float);
+		virtual void ApplyImpulse(float m_x, float m_y);
 
 	protected:
 
@@ -51,8 +48,6 @@ namespace Asteroids
 		Engine::Math::Vector2 Impulse();
 		virtual void ApplyImpulse() { m_velocity += Impulse(); };
 
-
-	private:
 		//members
 
 		float						m_mass;

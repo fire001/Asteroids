@@ -12,6 +12,7 @@ namespace Engine
 	namespace Math {
 		namespace MathUtilities
 		{
+		
 			const float PI = 3.1415926535897323846f;
 
 			float Converter(int);
@@ -20,7 +21,7 @@ namespace Engine
 			template<class T> T Clamp(T);
 			float ConvertRadToDegrees(float);
 			float ConvertDegreesToRad(float);
-			float Distance(double);
+			float CalculateSquareDistance(float m_x1, float m_y1, float m_x2, float m_y2);
 
 			template<typename T>
 			T RandomInRange(T min, T max) { return static_cast<T>(min + (rand() % (int)(max - min + 1))); }
@@ -29,7 +30,8 @@ namespace Engine
 			T RandomInRange2(T min, T max) { return min + (max - min) * (rand() / static_cast<T>(RAND_MAX)); }
 
 			float m_angleInRads;
-
+			float m_x;
+			float m_y;
 		};
 	}
 }
