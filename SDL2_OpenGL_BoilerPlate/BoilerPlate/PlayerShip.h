@@ -6,10 +6,10 @@
 #include "MathUtilities.hpp"
 #include "App.hpp"
 
-namespace Entidades
+namespace Nave
 {
 	enum PlayerState {NORMAL_STATE, COLLIDED_STATE, DELETE_STATE};
-	enum AsteroidsSize {NORMAL_SIZE = 0, MEDIUM_SIZE = 1, SMALL_SIZE = 2};
+	
 	namespace Entity
 	{
 
@@ -20,7 +20,7 @@ namespace Entidades
 			/*============================
 			*			CTOR
 			============================*/
-			Entidades::Entity::PlayerShip::PlayerShip(int, int);
+			Nave::Entity::PlayerShip::PlayerShip(int, int);
 
 
 
@@ -29,6 +29,8 @@ namespace Entidades
 			============================*/
 
 			void MoveForward(); //{ applyImpulse(); };
+			void translate(Engine::Math::Vector2 m_position);
+			void Move();
 			void RotateLeft();
 			void RotateRight();
 			void Render();
@@ -38,7 +40,8 @@ namespace Entidades
 			bool DetectCollision(PlayerShip* playership);
 			bool isColliding() const;
 			virtual void ApplyImpulse(float m_x, float m_y);
-			float warping(float m_x, float min, float max);
+			void Impulse();
+			
 
 				
 		private:
@@ -57,11 +60,13 @@ namespace Entidades
 			float m_thrust;
 			float m_rotate;
 			float m_radius;
+			//por si las moscas
 			float ConvertRadToDegrees(float);
 			float ConvertDegreesToRad(float);
 			float m_state;
 			float m_x;
 			float m_y;
+			float m_move;
 			
 			
 

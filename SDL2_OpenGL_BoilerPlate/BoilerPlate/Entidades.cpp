@@ -1,8 +1,6 @@
+
 #include "Entidades.hpp"
-#include "Vector2.hpp"
-#include <iostream>
-#include "Vector3.h"
-#include "MathUtilities.hpp"
+
 
 
 namespace Herramientas
@@ -13,16 +11,16 @@ namespace Herramientas
 		{
 			Entidades::Entidades() {}
 
-			/*Entidades::Entidades(int width, int height)
+			Entidades::Entidades(int width, int height)
 			{
-				m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
-				m_mass = 0.5f;
-				m_maxwidth = width / 2.0f;
-				m_minwidth = -width / 2.0f;
-				m_maxheight = height / 2.0f;
-				m_minheight = -height / 2.0f;
-				m_angleInRad = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset)
-		}*/
+				Engine::Math::Vector2 m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
+				float m_mass = 0.5f;
+				float m_maxwidth = width / 2.0f;
+				float m_minwidth = -width / 2.0f;
+				float m_maxheight = height / 2.0f;
+				float m_minheight = -height / 2.0f;
+				//float m_angleInRad = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
+		}
 
 			float Entidades::Render()
 			{
@@ -50,28 +48,36 @@ namespace Herramientas
 			}*/
 
 
-			/*float Entidades::rotate(float newAngle)
-			{
-				m_angle += newAngle;
-				m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
-			}
-			*/
 
-			/*float  Entidades::warping(float m_x, float min, float max)
+			float  Entidades::warping(float m_x, float min, float max)
 			{
-				if (m_x < min) return max - (min - m_x);
-				if (m_x > max) return min + (m_x - max);
+				if (m_x < min)
+				{
+					return max - (min - m_x);
+				}
+				if (m_x > max)
+				{
+					return min + (m_x - max);
+				}
 
 				return m_x;
+			}
+
+			/*void Asteroids::Entidades::ApplyImpulse(float m_x, float m_y)
+			{
+				if (m_mass > 0)
+				{
+					m_velocity += (impulsem_x / m_mass)* cosf(ConvertDegreesToRad(m_rotate));
+					m_velocity += (impulsem_x / m_mass)* sinf(ConvertDegreesToRad(m_rotate));
 			}*/
 
 			/*Engine::Math::Vector2 Entidades::Impulse()
 			{
 				float impulse = (Herramientas::Thrust / m_mass);
-				float x = impulse * std::cosf(m_angleInRads);
-				float y = impulse * std::sinf(m_angleInRads);
+				float m_x = impulse * std::cosf(m_angleInRads);
+				float m_y = impulse * std::sinf(m_angleInRads);
 
-				return Engine::Math::Vector2(x, y);
+				return Engine::Math::Vector2(m_x, m_y);
 			}*/
 		};
 	}

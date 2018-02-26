@@ -6,6 +6,7 @@
 
 namespace Asteroides
 {
+	enum AsteroidsSize { NORMAL_SIZE = 0, MEDIUM_SIZE = 1, SMALL_SIZE = 2 };
 	namespace Entidades
 	{
 		class Asteroides

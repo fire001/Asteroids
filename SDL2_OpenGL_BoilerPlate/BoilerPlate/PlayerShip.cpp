@@ -4,7 +4,7 @@
 #include "MathUtilities.hpp"
 #include "Entidades.hpp"
 
-	namespace Entidades
+	namespace Nave
 	{
 		namespace Entity
 		{
@@ -24,6 +24,7 @@
 				m_mass = (1.0f);
 				m_x = (0);
 				m_y = (0);
+				m_move = (false);
 			}
 				
 				void PlayerShip::Render()
@@ -49,43 +50,39 @@
 					glVertex2f(0.0f, -16.0f);
 					glVertex2f(-6.0f, -4.0f);
 
+					if (m_thrust)
+					{
+						glBegin(GL_POLYGON);
+						glVertex2f(6.0f, -4.0f);
+						glVertex2f(0.0f, -16.0f);
+						glVertex2f(-6.0f, -4.0f);
+						glEnd();
+					}
+
 					glEnd();
 				}
 
-				void PlayerShip::Update(float)
+				void PlayerShip::Update(float deltaTime)
 				{
+					if (!m_move) m_thrust = false;
+					//drag
+					//m_velocity = Engine::Math::Vector2(m_velocity.m_x * Herramientas::Drag, m_velocity.m_y * Herramientas::Drag);
 					// Calculating new position
 					Engine::Math::Vector2 m_position = m_position + m_velocity;
 
 					// Translation to new position
-					//translate(m_position);
+					translate( m_position);
 
 				}
-
-				float PlayerShip::warping(float m_x, float min, float max)
-				{
-					if (m_x < min)
-					{
-						return max - (min - m_x);
-					}
-					if (m_x > max)
-					{
-						return min + (m_x - max);
-					}
-					
-					return m_x;
-				}
-
-
 
 				// MOVE FORWARD
 				void PlayerShip::MoveForward()
 				{
-					/*float x = m_position->m_x + a.m_x;
-					float y = m_position->m_y + a.m_y;*/
-
 					m_thrust = true;
-					//m_position.m_x += warping();
+					m_move = true;
+
+					Impulse();
+					
 				}
 
 				void PlayerShip::RotateLeft()
@@ -119,20 +116,20 @@
 					{
 						m_velocity += (impulsem_x / m_mass)* cosf(ConvertDegreesToRad(m_rotate));
 						m_velocity += (impulsem_x / m_mass)* sinf(ConvertDegreesToRad(m_rotate));
-						//return Impulse();
+						return Impulse();
 				}
 				}
 
-				/*void PlayerShip::Impulse() 
+				void PlayerShip::Impulse() 
 				{
 					float impulse = (m_thrust / m_mass);
-					float x = impulse * std::cosf(m_angleInRads);
-					float y = impulse * std::sinf(m_angleInRads);
-					Engine::Math::Vector2(x, y) += m_velocity;
+					float m_x = impulse * std::cosf(m_angleInRads);
+					float m_y = impulse * std::sinf(m_angleInRads);
+					Engine::Math::Vector2(m_x, m_y) += m_velocity;
 
 					return Impulse();
 				
-				}*/
+				}
 
 				// collide
 				bool PlayerShip::CouldCollide() const
