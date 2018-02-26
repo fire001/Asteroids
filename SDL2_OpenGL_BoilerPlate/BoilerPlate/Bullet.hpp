@@ -5,12 +5,13 @@
 #include "Entidades.hpp"
 #include "Vector2.hpp"
 #include "MathUtilities.hpp"
+#include "PlayerShip.h"
 
 namespace Herramientas
 {
 	namespace Asteroids
 	{
-		class Bullet 
+		class Bullet
 		{
 		public:
 
@@ -21,7 +22,14 @@ namespace Herramientas
 			void Render();
 			void Update(float);
 
-			int BulletLife;
+			int		m_bulletLife;
+			float	m_mass;
+			float	m_radius;
+			float	m_angle;
+			float	m_angleInRads;
+			float	m_width;
+			float	m_height;
+			Engine::Math::Vector2	m_position;
 		};
 	}
 }

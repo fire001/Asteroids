@@ -5,6 +5,9 @@
 #include "Entidades.hpp"
 #include "MathUtilities.hpp"
 #include "App.hpp"
+#include "Bullet.hpp"
+#include <vector>
+#include <iostream>
 
 namespace Nave
 {
@@ -35,22 +38,36 @@ namespace Nave
 			void RotateRight();
 			void Render();
 			void Update(float);
+			void Drag();
+			void shooting();
 			void ResetOrientation();
-			bool CouldCollide() const;
+			bool CouldCollide() const { return m_inmune; };
 			bool DetectCollision(PlayerShip* playership);
 			bool isColliding() const;
 			virtual void ApplyImpulse(float m_x, float m_y);
 			void Impulse();
+			void EraseBullet();
 			
 
-				
+			void setCollision(bool status) { m_inmune = status; };
+			void setVelocity(Engine::Math::Vector2 m_velocity) { m_velocity = m_velocity; };
+			
+
+			std::vector<Bullet*>			m_bullets;
 		private:
+
+			void DeleteBullet();
+
 
 			/*============================
 			*		  MEMBERS
 			============================*/
 			Engine::Math::Vector2	m_position;
-			float	m_velocity;
+			Engine::Math::Vector2	m_velocity;
+			
+			bool					m_inmune;
+			int						m_respawnTime;
+			int						m_usedBullets;
 
 			float m_width;
 			float m_height;
@@ -60,6 +77,8 @@ namespace Nave
 			float m_thrust;
 			float m_rotate;
 			float m_radius;
+			float					m_color;
+
 			//por si las moscas
 			float ConvertRadToDegrees(float);
 			float ConvertDegreesToRad(float);

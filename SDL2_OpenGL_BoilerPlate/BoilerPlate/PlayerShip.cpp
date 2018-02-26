@@ -4,6 +4,7 @@
 #include "MathUtilities.hpp"
 #include "Entidades.hpp"
 
+
 	namespace Nave
 	{
 		namespace Entity
@@ -15,6 +16,7 @@
 			{
 				m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
 				m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
+				
 				m_angle = (0.0f);
 				m_width = (width + 50);
 				m_height = (height + 50);
@@ -25,11 +27,32 @@
 				m_x = (0);
 				m_y = (0);
 				m_move = (false);
+				int m_usedBullets(0);
 			}
+				
 				
 				void PlayerShip::Render()
 				{
+					// Respawn delay
+					if (!m_inmune)
+					{
+						if (m_respawnTime >= 120)
+						{
+							setCollision(true);
+							m_respawnTime = 0;
+						}
+						m_respawnTime++;
 
+						m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
+
+						Herramientas::Asteroids::Entidades::Render(GL_LINE_LOOP, m_position, m_angle);
+
+						if (m_inmune == false) EraseBullet();
+
+						for (int i = 0; i < static_cast<int>(m_bullets.size()); i++)
+							m_bullets[i]->Render();
+
+						return;
 					// Reset Matrix
 					glLoadIdentity();
 
@@ -72,7 +95,21 @@
 
 					// Translation to new position
 					translate( m_position);
+					//Drag
+					m_velocity = Engine::Math::Vector2(	m_velocity.m_x * Herramientas::DRAG, m_velocity.m_y * Herramientas::DRAG);
 
+				}
+
+				void PlayerShip::Drag()
+				{
+				}
+
+				void PlayerShip::shooting()
+				{
+					if (m_usedBullets == Herramientas::MAX_BULLETS) return;
+					Bullet* nBullet = new Bullet(Engine::Math::Vector2	m_position, Engine::Math::Vector2	m_velocity, Engine::Math::Vector3(1.f, 0.5f, 0.f), m_angle, m_width, m_height);
+					m_bullets.push_back(nBullet);
+					m_usedBullets++;
 				}
 
 				// MOVE FORWARD
@@ -129,6 +166,10 @@
 
 					return Impulse();
 				
+				}
+
+				void PlayerShip::EraseBullet(Herramientas::Asteroids::Bullet *)
+				{
 				}
 
 				// collide
