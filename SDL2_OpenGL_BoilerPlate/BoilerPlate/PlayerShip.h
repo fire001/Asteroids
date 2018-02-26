@@ -4,7 +4,6 @@
 #include "Vector2.hpp"
 #include "Entidades.hpp"
 #include "MathUtilities.hpp"
-#include "App.hpp"
 #include "Bullet.hpp"
 #include <vector>
 #include <iostream>
@@ -37,7 +36,7 @@ namespace Nave
 			void RotateLeft();
 			void RotateRight();
 			void Render();
-			void Update(float);
+			void Update();
 			void Drag();
 			void shooting();
 			void ResetOrientation();
@@ -45,6 +44,7 @@ namespace Nave
 			bool DetectCollision(PlayerShip* playership);
 			bool isColliding() const;
 			virtual void ApplyImpulse(float m_x, float m_y);
+			//impulso es == fuerza * deltatiempo
 			void Impulse();
 			void EraseBullet();
 			
@@ -53,7 +53,7 @@ namespace Nave
 			void setVelocity(Engine::Math::Vector2 m_velocity) { m_velocity = m_velocity; };
 			
 
-			std::vector<Bullet*>			m_bullets;
+			
 		private:
 
 			void DeleteBullet();
@@ -68,15 +68,15 @@ namespace Nave
 			bool					m_inmune;
 			int						m_respawnTime;
 			int						m_usedBullets;
-
-			float m_width;
-			float m_height;
-			float m_angle;
-			float m_mass;
-			float m_angleInRads;
-			float m_thrust;
-			float m_rotate;
-			float m_radius;
+			float					m_bullets;
+			float					m_width;
+			float					m_height;
+			float					m_angle;
+			float					m_mass;
+			float					m_angleInRads;
+			float					m_thrust;
+			float					m_rotate;
+			float					m_radius;
 			float					m_color;
 
 			//por si las moscas

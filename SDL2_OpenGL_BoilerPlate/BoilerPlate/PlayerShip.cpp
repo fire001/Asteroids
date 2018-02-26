@@ -85,20 +85,16 @@
 					glEnd();
 				}
 
-				void PlayerShip::Update(float deltaTime)
-				{
-					if (!m_move) m_thrust = false;
-					//drag
-					//m_velocity = Engine::Math::Vector2(m_velocity.m_x * Herramientas::Drag, m_velocity.m_y * Herramientas::Drag);
-					// Calculating new position
-					Engine::Math::Vector2 m_position = m_position + m_velocity;
+					void PlayerShip::Update()
+					{
+						//drag
+						m_velocity = Engine::Math::Vector2(m_velocity.m_x * Herramientas::Drag, m_velocity.m_y * Herramientas::Drag);
+						// Calculating new position
+						Engine::Math::Vector2 m_position = m_position + m_velocity;
 
-					// Translation to new position
-					translate( m_position);
-					//Drag
-					m_velocity = Engine::Math::Vector2(	m_velocity.m_x * Herramientas::DRAG, m_velocity.m_y * Herramientas::DRAG);
-
-				}
+						// Translation to new position
+						translate(m_position);
+					}
 
 				void PlayerShip::Drag()
 				{

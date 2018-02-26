@@ -12,16 +12,22 @@
 
 namespace Herramientas
 {
-	const float Thrust = 1.25f;
+	const float Thrust = 1.20f;
 	const float angle_offset = 90.0f;
 	const float Drag = 0.9f;
 	// asteroides
 	const int Max_Points = 12;
 	const float MIN_SIZE = 25.f;
 	const float MAX_SIZE = 45.f;
+	const float MAX_BIG_ASTEROID_SPEED = 3.f;
+	const float MAX_MEDIUM_ASTEROID_SPEED = 3.125F;
+	const float MAX_SMALL_ASTEROID_SPEED = 3.25f;
 
 	// nave
+	const int MAX_BULLETS = 5;
 	const int Max_Ship_Speed = 10.f;
+	//bullets
+	const int MAX_BULLET_SPEED = 5.f;
 }
 namespace Asteroids
 {
@@ -37,11 +43,18 @@ namespace Asteroids
 		void Impulse();
 		float warping(float m_x, float min, float max);
 		virtual void ApplyImpulse(float m_x, float m_y);
+		virtual void DrawCircle(float);
+		bool isColliding(Entidades*);
+	protected:
+		virtual void clampSpeed(float);
+		void RandomPosition(float m_yMax, float m_xMax);
 
 	private:
 
 		//members
-
+		float m_x;
+		float m_max;
+		float m_min;
 		float						m_mass;
 		float						m_angle;
 		float						m_angleInRads;

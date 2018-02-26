@@ -11,6 +11,7 @@
 #include "TimeManager.hpp"
 #include "PlayerShip.h"
 #include "Asteroides.hpp"
+#include "Entidades.hpp"
 
 
 

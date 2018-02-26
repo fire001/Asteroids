@@ -22,14 +22,15 @@ namespace Herramientas
 				//float m_angleInRad = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
 		}
 
-			float Entidades::Render()
+			void Entidades::Render()
 			{
 				//Reset Matrix
 				//glLoadIdentity();
+
 				//Warpeo call
-				//warping();
+				Herramientas::Asteroids::Entidades::warping();
 				//translate to current position
-				//translate(m_position.m_x , m_position.m_y, 0.0f);
+				//translate(Engine::Math::Vector2 m_position.m_x , m_position.m_y, 0.0f);
 				//rotation
 				//glRotate(angle, 0.0f, 0.0f, 1.0f)
 				//color set
@@ -38,14 +39,14 @@ namespace Herramientas
 				//glEnd();
 			}
 
-			/*void Asteroids::Entidades::Update(float halfTime)
+			void Asteroids::Entidades::Update(float halfTime)
 			{
-				m_position.m_x += m_velocity.m_x * static_cast<float>(halfTime);
-				m_position.m_y += m_velocity.m_y * static_cast<float>(halfTime);
+				Engine::Math::Vector2 m_position.m_x += Engine::Math::Vector2 m_velocity.m_x * static_cast<float>(halfTime);
+				Engine::Math::Vector2 m_position.m_y += Engine::Math::Vector2 m_velocity.m_y * static_cast<float>(halfTime);
 
-				m_position.m_x = warping(m_position.m_x, m_minwidth, m_maxwidth);
-				m_position.m_y = warping(m_position.m_y, m_minheight, m_maxheight);
-			}*/
+				Engine::Math::Vector2 m_position.m_x = warping(Engine::Math::Vector2 m_position.m_x, m_minwidth, m_maxwidth);
+				Engine::Math::Vector2 m_position.m_y = warping(Engine::Math::Vector2 m_position.m_y, m_minheight, m_maxheight);
+			}
 
 
 
@@ -61,6 +62,11 @@ namespace Herramientas
 				}
 
 				return m_x;
+			}
+
+			void Asteroids::Entidades::DrawCircle(float m_radius)
+			{
+
 			}
 
 			/*void Asteroids::Entidades::ApplyImpulse(float m_x, float m_y)
