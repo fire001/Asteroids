@@ -29,6 +29,7 @@ namespace Herramientas
 			float	m_angleInRads;
 			float	m_width;
 			float	m_height;
+			Engine::Math::Vector2	m_velocity;
 			Engine::Math::Vector2	m_position;
 		};
 	}

@@ -20,13 +20,16 @@ namespace Asteroides
 				AsteroidsSize getSize() const { return m_size; };
 				
 		private:
-
+			void						sizeFactor();
 			Engine::Math::Vector2*			m_position;
 			float							m_height;
 			float							m_width;
 			float							m_angle;
-			float							m_velocity;
-			AsteroidsSize				 m_size;
+			float							m_mass;
+			float							m_radius;
+			float							m_angleInRads;
+			Engine::Math::Vector2			m_velocity;
+			AsteroidsSize				    m_size;
 
 		};
 	}

@@ -15,6 +15,7 @@
     <ClCompile Include="Asteroides.cpp" />
     <ClCompile Include="Entidades.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="FullGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.hpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Asteroides.hpp" />
     <ClInclude Include="Entidades.hpp" />
     <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="FullGame.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

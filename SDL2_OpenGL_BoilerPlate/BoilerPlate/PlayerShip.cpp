@@ -3,6 +3,7 @@
 #include "Vector2.hpp"
 #include "MathUtilities.hpp"
 #include "Entidades.hpp"
+#include "Bullet.hpp"
 
 
 	namespace Nave
@@ -34,7 +35,7 @@
 				void PlayerShip::Render()
 				{
 					// Respawn delay
-					if (!m_inmune)
+					/*if (!m_inmune)
 					{
 						if (m_respawnTime >= 120)
 						{
@@ -52,7 +53,7 @@
 						for (int i = 0; i < static_cast<int>(m_bullets.size()); i++)
 							m_bullets[i]->Render();
 
-						return;
+						return;*/
 					// Reset Matrix
 					glLoadIdentity();
 
@@ -100,13 +101,13 @@
 				{
 				}
 
-				void PlayerShip::shooting()
+				/*void PlayerShip::shooting()
 				{
 					if (m_usedBullets == Herramientas::MAX_BULLETS) return;
-					Bullet* nBullet = new Bullet(Engine::Math::Vector2	m_position, Engine::Math::Vector2	m_velocity, Engine::Math::Vector3(1.f, 0.5f, 0.f), m_angle, m_width, m_height);
-					m_bullets.push_back(nBullet);
+					Herramientas::Asteroids::Bullet* nBullet = new Herramientas::Asteroids::Bullet (Engine::Math::Vector2 m_position, Engine::Math::Vector2 m_velocity, Engine::Math::Vector3(1.f, 0.5f, 0.f), m_angle, m_width, m_height);
+					Nave::Entity::PlayerShip m_bullets.push_back(nBullet);
 					m_usedBullets++;
-				}
+				}*/
 
 				// MOVE FORWARD
 				void PlayerShip::MoveForward()

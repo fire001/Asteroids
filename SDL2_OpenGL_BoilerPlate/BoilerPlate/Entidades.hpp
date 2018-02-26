@@ -4,10 +4,11 @@
 #define _ENTIDADES_HPP
 
 #include <iostream>
-
+#include "SDL2\SDL_opengl.h"
 #include "MathUtilities.hpp"
 #include "Vector2.hpp"
 #include "Vector3.h"
+#include "PlayerShip.h"
 
 
 namespace Herramientas
@@ -50,7 +51,6 @@ namespace Asteroids
 		void RandomPosition(float m_yMax, float m_xMax);
 
 	private:
-
 		//members
 		float m_x;
 		float m_max;
@@ -72,7 +72,6 @@ namespace Asteroids
 		float						ConvertRadToDegrees(float);
 		float						ConvertDegreesToRad(float);
 		float						m_state;
-		float						m_x;
 		float					    m_y;
 	};
 

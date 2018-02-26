@@ -34,7 +34,7 @@ namespace Herramientas
 			glLoadIdentity();
 
 			// Wrap around call
-			Herramientas::Asteroids::Entidades::warping();
+			//warping();
 
 			// Translation
 			glTranslatef(m_position.m_x, m_position.m_y, 0.f);
@@ -64,16 +64,16 @@ namespace Herramientas
 			Engine::Math::Vector2 newPos;
 
 			// Applying impulse
-			Asteroids::Entidades::Impulse();
+			//Asteroids::Entidades::Impulse();
 
 			//Clamping speed
-			clampSpeed(Consts::MAX_BULLET_SPEED);
+			//clampSpeed(Consts::MAX_BULLET_SPEED);
 
 			// New position result
 			newPos = m_position + m_velocity;
 
 			//--------Translation to new position--------//
-			translate(newPos);
+			//translate(newPos);
 		}
 	}
 }

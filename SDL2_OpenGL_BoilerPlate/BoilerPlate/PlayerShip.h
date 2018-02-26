@@ -46,7 +46,7 @@ namespace Nave
 			virtual void ApplyImpulse(float m_x, float m_y);
 			//impulso es == fuerza * deltatiempo
 			void Impulse();
-			void EraseBullet();
+			void EraseBullet(Herramientas::Asteroids::Bullet *);
 			
 
 			void setCollision(bool status) { m_inmune = status; };

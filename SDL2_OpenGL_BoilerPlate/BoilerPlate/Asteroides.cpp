@@ -9,6 +9,26 @@ namespace Asteroides
 {
 	namespace Entidades
 	{
+		Asteroides::Asteroides(const int width, const int height)
+		{
+			randomAngle(2, 24);
+			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
+			m_width = width + 50;
+			m_height = height + 50;
+			sizeFactor();
+			m_velocity = Engine::Math::Vector2();
+		}
+		Asteroides::Asteroides(AsteroidsSize, Engine::Math::Vector2, const int width, const int height)
+		{
+			m_size = m_size;
+			Engine::Math::Vector2 m_position = m_position;
+			randomAngle(2, 24);
+			m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
+			m_width = width;
+			m_height = height;
+			sizeFactor();
+			m_velocity = Engine::Math::Vector2();
+		}
 		void Asteroides::Render()
 		{
 			// Reset Matrix
@@ -41,6 +61,18 @@ namespace Asteroides
 
 			// Translation to new position
 			//translate(pos);
+		}
+		void Asteroides::randomAngle(float m_min, float m_max)
+		{
+			m_angle = Engine::Math::MathUtilities::RandomInRange<float>(m_min, m_max);
+		}
+		void Asteroides::sizeFactor()
+		{
+			if (m_size == AsteroidsSize::BIG_SIZE) { m_radius = 40.f; m_mass = 3.f; };
+
+			if (m_size == AsteroidsSize::MEDIUM_SIZE) { m_radius = 20.f; m_mass = 2.5f; };
+
+			if (m_size == AsteroidsSize::SMALL_SIZE) { m_radius = 10.f; m_mass = 2.f; };
 		}
 	}
 }

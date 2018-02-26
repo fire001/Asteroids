@@ -1,6 +1,7 @@
 
 #include "Entidades.hpp"
-
+#include "PlayerShip.h"
+#include "MathUtilities.hpp"
 
 
 namespace Herramientas
@@ -22,35 +23,35 @@ namespace Herramientas
 				//float m_angleInRad = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
 		}
 
-			void Entidades::Render()
+			void Entidades::Render(Engine::Math::Vector2 position, float angle)
 			{
 				//Reset Matrix
-				//glLoadIdentity();
+				glLoadIdentity();
 
 				//Warpeo call
-				Herramientas::Asteroids::Entidades::warping();
+				//Entidades::warping();
 				//translate to current position
-				//translate(Engine::Math::Vector2 m_position.m_x , m_position.m_y, 0.0f);
+				glTranslatef(position.m_x, position.m_y, 0.0f);
 				//rotation
-				//glRotate(angle, 0.0f, 0.0f, 1.0f)
+				glRotatef(angle, 0.0f, 0.0f, 1.0f);
 				//color set
 				//glColor3f(color.m_x, color.m_y, color.m_z);
 
-				//glEnd();
+				glEnd();
 			}
 
-			void Asteroids::Entidades::Update(float halfTime)
+			/*void Asteroids::Entidades::Update(float halfTime)
 			{
-				Engine::Math::Vector2 m_position.m_x += Engine::Math::Vector2 m_velocity.m_x * static_cast<float>(halfTime);
-				Engine::Math::Vector2 m_position.m_y += Engine::Math::Vector2 m_velocity.m_y * static_cast<float>(halfTime);
+				 m_position.m_x +=  m_velocity.m_x * static_cast<float>(halfTime);
+				 m_position.m_y +=  m_velocity.m_y * static_cast<float>(halfTime);
 
-				Engine::Math::Vector2 m_position.m_x = warping(Engine::Math::Vector2 m_position.m_x, m_minwidth, m_maxwidth);
-				Engine::Math::Vector2 m_position.m_y = warping(Engine::Math::Vector2 m_position.m_y, m_minheight, m_maxheight);
+				 m_position.m_x = warping( m_position.m_x, m_minwidth, m_maxwidth);
+				 m_position.m_y = warping( m_position.m_y, m_minheight, m_maxheight);
 			}
+			*/
 
 
-
-			float  Entidades::warping(float m_x, float min, float max)
+			float Entidades::warping(float m_x, float min, float max)
 			{
 				if (m_x < min)
 				{
@@ -69,6 +70,20 @@ namespace Herramientas
 
 			}
 
+			void Asteroids::Entidades::clampSpeed(float)
+			{
+			}
+
+			/*void Asteroids::Entidades::RandomPosition(float m_yMax, float m_xMax)
+			{
+
+				float m_x = Engine::Math::MathUtilities::RandomInRange<float>(-m_xMax, m_xMax);
+				float m_y = Engine::Math::MathUtilities::RandomInRange<float>(-m_yMax, m_yMax);
+
+				 m_position.m_x = m_x;
+				 m_position.m_y = m_y;
+			}*/
+
 			/*void Asteroids::Entidades::ApplyImpulse(float m_x, float m_y)
 			{
 				if (m_mass > 0)
@@ -85,6 +100,8 @@ namespace Herramientas
 
 				return Engine::Math::Vector2(m_x, m_y);
 			}*/
+
+		
 		};
 	}
 }
