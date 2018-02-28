@@ -10,7 +10,7 @@ namespace Engine
 {
 	const float DESIRED_FRAME_RATE = 60.0f;
 	const float DESIRED_FRAME_TIME = 1.0f / DESIRED_FRAME_RATE;
-	float movingUnit = 10.0f;
+	float movingUnit = 2.0f;
 
 	App::App(const std::string& title, const int width, const int height)
 		: m_title(title)
@@ -20,10 +20,9 @@ namespace Engine
 		, m_timer(new TimeManager)
 		, m_mainWindow(nullptr)
 	{
-		
 		m_state = GameState::UNINITIALIZED;
 		m_lastFrameTime = m_timer->GetElapsedTimeInSeconds();
-		m_player = new Engine::Entity::PlayerShip(m_width, m_height);
+		m_player = new Nave::Entity::PlayerShip(m_width, m_height);
 	}
 
 	App::~App()
@@ -191,6 +190,26 @@ namespace Engine
 
 		SDL_GL_SwapWindow(m_mainWindow);
 		
+	}
+
+	void App::asterRender()
+	{
+		m_asteroids->Render();
+		glClearColor(0.50, 3.50f, 2.f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glBegin(GL_LINE_LOOP);
+		glVertex2f(20.0f, 20.f);
+		glVertex2f(12.0f, -10.0f);
+		glEnd();
+
+		glVertex2f(19.0f, -50.0f);
+		glVertex2f(20.0f, -16.0f);
+		glVertex2f(-10.0f, -30.0f);
+
+		glEnd();
+
+		SDL_GL_SwapWindow(m_mainWindow);
 	}
 
 	bool App::SDLInit()

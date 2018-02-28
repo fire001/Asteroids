@@ -4,25 +4,31 @@
 #define _ENTIDADES_HPP
 
 #include <iostream>
-#include <vector>
-#include <cmath>
-#include <algorithm>
-
+#include "SDL2\SDL_opengl.h"
 #include "MathUtilities.hpp"
 #include "Vector2.hpp"
 #include "Vector3.h"
+#include "PlayerShip.h"
+
 
 namespace Herramientas
 {
-	const float Thrust = 1.25f;
+	const float Thrust = 1.20f;
 	const float angle_offset = 90.0f;
+	const float Drag = 0.9f;
 	// asteroides
 	const int Max_Points = 12;
-	const float Min_Size = 25.f;
-	const float Max_Size = 45.f;
+	const float MIN_SIZE = 25.f;
+	const float MAX_SIZE = 45.f;
+	const float MAX_BIG_ASTEROID_SPEED = 3.f;
+	const float MAX_MEDIUM_ASTEROID_SPEED = 3.125F;
+	const float MAX_SMALL_ASTEROID_SPEED = 3.25f;
 
 	// nave
+	const int MAX_BULLETS = 5;
 	const int Max_Ship_Speed = 10.f;
+	//bullets
+	const int MAX_BULLET_SPEED = 5.f;
 }
 namespace Asteroids
 {
@@ -32,10 +38,9 @@ namespace Asteroids
 		Entidades();
 		Entidades(int, int);
 
-		virtual void Render(unsigned int, Engine::Math::Vector2, Engine::Math::Vector3, float);
-		static  void Render(unsigned int, std::vector<Engine::Math::Vector2>, Engine::Math::Vector2 position, Engine::Math::Vector3);
-		void translate(Engine::Math::Vector2 position);
+		void translate(Engine::Math::Vector2 m_position);
 		void Update(float halfTime);
+<<<<<<< HEAD
 		float Render();
 		float warping();
 		float rotate(float);
@@ -43,28 +48,41 @@ namespace Asteroids
 
 
 
+=======
+		void Render();
+		void Impulse();
+		float warping(float m_x, float min, float max);
+		virtual void ApplyImpulse(float m_x, float m_y);
+		virtual void DrawCircle(float);
+		bool isColliding(Entidades*);
+>>>>>>> 39ff998221662540ca132c4204f1d6ed9071a21b
 	protected:
-
-		//funtions
-		Engine::Math::Vector2 Impulse();
-		virtual void ApplyImpulse() { m_velocity += Impulse(); };
-
+		virtual void clampSpeed(float);
+		void RandomPosition(float m_yMax, float m_xMax);
 
 	private:
 		//members
-
+		float m_x;
+		float m_max;
+		float m_min;
 		float						m_mass;
 		float						m_angle;
 		float						m_angleInRads;
-		int							m_width;
-		int							m_height;
 		Engine::Math::Vector2		m_velocity;
 		Engine::Math::Vector2		m_position;
-		Engine::Math::Vector3		m_color;
 		float						m_maxwidth;
 		float						m_minwidth;
 		float						m_maxheight;
 		float						m_minheight;
+		float						m_width;
+		float						m_height;
+		float						m_thrust;
+		float					    m_rotate;
+		float						m_radius;
+		float						ConvertRadToDegrees(float);
+		float						ConvertDegreesToRad(float);
+		float						m_state;
+		float					    m_y;
 	};
 
 }
