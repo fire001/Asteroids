@@ -1,9 +1,5 @@
 #include "PlayerShip.h"
-#include "SDL2\SDL_opengl.h"
-#include "Vector2.hpp"
-#include "MathUtilities.hpp"
-#include "Entidades.hpp"
-#include "Bullet.hpp"
+
 
 
 	namespace Nave
@@ -34,26 +30,7 @@
 				
 				void PlayerShip::Render()
 				{
-					// Respawn delay
-					/*if (!m_inmune)
-					{
-						if (m_respawnTime >= 120)
-						{
-							setCollision(true);
-							m_respawnTime = 0;
-						}
-						m_respawnTime++;
-
-						m_angleInRads = Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle + Herramientas::angle_offset);
-
-						Herramientas::Asteroids::Entidades::Render(GL_LINE_LOOP, m_position, m_angle);
-
-						if (m_inmune == false) EraseBullet();
-
-						for (int i = 0; i < static_cast<int>(m_bullets.size()); i++)
-							m_bullets[i]->Render();
-
-						return;*/
+					
 					// Reset Matrix
 					glLoadIdentity();
 
@@ -104,8 +81,8 @@
 				/*void PlayerShip::shooting()
 				{
 					if (m_usedBullets == Herramientas::MAX_BULLETS) return;
-					Herramientas::Asteroids::Bullet* nBullet = new Herramientas::Asteroids::Bullet (Engine::Math::Vector2 m_position, Engine::Math::Vector2 m_velocity, Engine::Math::Vector3(1.f, 0.5f, 0.f), m_angle, m_width, m_height);
-					Nave::Entity::PlayerShip m_bullets.push_back(nBullet);
+					Herramientas::Asteroids::Bullet* nBullet = new Herramientas::Asteroids::Bullet ( m_position,  m_velocity, m_angle, m_width, m_height);
+					m_bullets.push_back(nBullet);
 					m_usedBullets++;
 				}*/
 
@@ -115,13 +92,11 @@
 					m_thrust = true;
 					m_move = true;
 
-<<<<<<< HEAD
-					m_thruster = true;
+
+					m_thrust = true;
 					m_position.m_x += warping(50,50,50);
-=======
-					Impulse();
-					
->>>>>>> 39ff998221662540ca132c4204f1d6ed9071a21b
+
+					Impulse();				
 				}
 
 				void PlayerShip::RotateLeft()
@@ -136,10 +111,6 @@
 				{
 					float new_angle = -5.0f;
 					m_angle += new_angle;
-<<<<<<< HEAD
-=======
-
->>>>>>> 39ff998221662540ca132c4204f1d6ed9071a21b
 
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
 
@@ -173,7 +144,11 @@
 				
 				}
 
-				void PlayerShip::EraseBullet(Herramientas::Asteroids::Bullet *)
+				void PlayerShip::EraseBullet()
+				{
+				}
+
+				void PlayerShip::DeleteBullet()
 				{
 				}
 

@@ -3,21 +3,23 @@
 
 namespace Engine {
 
-	namespace Math {
-		namespace MathUtilities {
+	namespace Math 
+	{
+		class MathUtilities 
+		{
 
-			float Converter(int IntToFloat)
+			float MathUtilities::Converter(int IntToFloat)
 			{
 				return (float)roundf(IntToFloat);
 			}
 
 
-			float Round(int x)
+			float MathUtilities::Round(int x)
 			{
 				return (x / 2) * 2;
 			}
 
-			float PoweOfTwo(int num)
+			float MathUtilities::PoweOfTwo(int num)
 			{
 				while (((num % 2) == 0) && num > 1)
 					num /= 2;
@@ -36,23 +38,23 @@ namespace Engine {
 			}
 
 
-			float ConvertRadToDegrees(float angleInRadians)
+			float MathUtilities::ConvertRadToDegrees(float angleInRadians)
 			{
 				return angleInRadians * (PI / 180);
 			}
 
-			float ConvertDegreesToRad(float angleInDegrees)
+			float MathUtilities::ConvertDegreesToRad(float angleInDegrees)
 			{
 				return angleInDegrees * (180 / PI);
 			}
 
-			float CalculateSquareDistance(float m_x1, float m_y1, float m_x2, float m_y2)
+			float MathUtilities::CalculateSquareDistance(float m_x1, float m_y1, float m_x2, float m_y2)
 			{
 				float m_xdiff = m_x2 - m_x1;
 				float m_ydiff = m_y2 - m_x2;
 				return (m_xdiff * m_xdiff) + (m_ydiff * m_ydiff);
 			}
 
-		}
+		};
 	}
 }

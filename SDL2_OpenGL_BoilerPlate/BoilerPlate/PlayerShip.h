@@ -5,6 +5,7 @@
 #include "Entidades.hpp"
 #include "MathUtilities.hpp"
 #include "Bullet.hpp"
+#include "SDL2\SDL_opengl.h"
 #include <vector>
 #include <iostream>
 
@@ -15,7 +16,7 @@ namespace Nave
 	namespace Entity
 	{
 
-		class PlayerShip
+		class PlayerShip : Asteroids::Entidades
 		{
 		public:
 
@@ -46,9 +47,7 @@ namespace Nave
 			virtual void ApplyImpulse(float m_x, float m_y);
 			//impulso es == fuerza * deltatiempo
 			void Impulse();
-			void EraseBullet(Herramientas::Asteroids::Bullet *);
-			
-
+			void EraseBullet();
 			void setCollision(bool status) { m_inmune = status; };
 			void setVelocity(Engine::Math::Vector2 m_velocity) { m_velocity = m_velocity; };
 			
@@ -74,27 +73,11 @@ namespace Nave
 			float					m_angle;
 			float					m_mass;
 			float					m_angleInRads;
-			float					m_thrust;
 			float					m_rotate;
 			float					m_radius;
 			float					m_color;
-
-<<<<<<< HEAD
-			float m_width;
-			float m_height;
-			float m_angle;
-			float m_mass;
-			//float m_angle;
-			float m_angleInRads;
-			bool m_thruster;
-			bool m_moving;
-			float m_radius;
-			//void ApplyImpulse() override { m_velocity += Impulse(); };
-
-		};
-		}
-
-=======
+			bool					m_thrust;
+			//virtual void ApplyImpulse() override { m_velocity += Impulse(); };
 			//por si las moscas
 			float ConvertRadToDegrees(float);
 			float ConvertDegreesToRad(float);
@@ -102,12 +85,6 @@ namespace Nave
 			float m_x;
 			float m_y;
 			float m_move;
-			
-			
-
-		};
-
-			
+		};		
 		}
->>>>>>> 39ff998221662540ca132c4204f1d6ed9071a21b
 	}

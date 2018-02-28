@@ -74,21 +74,4 @@ namespace Engine
 		};
 	}
 
-<<<<<<< HEAD
-		//MEMBERS
-		Engine::Entity::PlayerShip*        m_player;
-		int									m_width;
-		int									m_height;
-		int									m_nUpdates;
-		double								m_lastFrameTime;
-		std::string							m_title;
-		SDL_Window*							m_mainWindow;
-		SDL_GLContext						m_context;
-		GameState::State					m_state;
-		Engine::TimeManager*				m_timer;
-		
-	};
-}
-=======
->>>>>>> 39ff998221662540ca132c4204f1d6ed9071a21b
 #endif /* GAME_HPP */
