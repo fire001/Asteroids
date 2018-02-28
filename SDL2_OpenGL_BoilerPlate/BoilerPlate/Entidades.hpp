@@ -29,51 +29,53 @@ namespace Herramientas
 	const int Max_Ship_Speed = 10.f;
 	//bullets
 	const int MAX_BULLET_SPEED = 5.f;
-}
-namespace Asteroids
-{
-	class Entidades
+
+	namespace Asteroids
 	{
-	public:
-		Entidades();
-		Entidades(int, int);
+		class Entidades
+		{
+		public:
+			Entidades();
+			Entidades(int, int);
 
-		void translate(Engine::Math::Vector2 m_position);
-		void Update(float halfTime);
-		void Render();
-		void Impulse();
-		float warping(float m_x, float min, float max);
-		virtual void ApplyImpulse(float m_x, float m_y);
-		virtual void DrawCircle(float);
-		bool isColliding(Entidades*);
-	protected:
-		virtual void clampSpeed(float);
-		void RandomPosition(float m_yMax, float m_xMax);
+			void translate(Engine::Math::Vector2 m_position);
+			void Update(float halfTime);
+			float Render();
+			float rotate(float);
+			float warping(float, float, float);
+			virtual void Impulse();
+			virtual void DrawCircle(float);
+			bool isColliding(Entidades*);
 
-	private:
-		//members
-		float m_x;
-		float m_max;
-		float m_min;
-		float						m_mass;
-		float						m_angle;
-		float						m_angleInRads;
-		Engine::Math::Vector2		m_velocity;
-		Engine::Math::Vector2		m_position;
-		float						m_maxwidth;
-		float						m_minwidth;
-		float						m_maxheight;
-		float						m_minheight;
-		float						m_width;
-		float						m_height;
-		float						m_thrust;
-		float					    m_rotate;
-		float						m_radius;
-		float						ConvertRadToDegrees(float);
-		float						ConvertDegreesToRad(float);
-		float						m_state;
-		float					    m_y;
-	};
+		protected:
+			virtual void clampSpeed(float);
+			void RandomPosition(float m_yMax, float m_xMax);
 
+		private:
+			//members
+			float m_x;
+			float m_max;
+			float m_min;
+			float						m_mass;
+			float						m_angle;
+			float						m_angleInRads;
+			Engine::Math::Vector2		m_velocity;
+			Engine::Math::Vector2		m_position;
+			float						m_maxwidth;
+			float						m_minwidth;
+			float						m_maxheight;
+			float						m_minheight;
+			float						m_width;
+			float						m_height;
+			float						m_thrust;
+			float					    m_rotate;
+			float						m_radius;
+			float						ConvertRadToDegrees(float);
+			float						ConvertDegreesToRad(float);
+			float						m_state;
+			float					    m_y;
+		};
+
+	}
 }
 #endif // !_ENTIDADES_HPP_

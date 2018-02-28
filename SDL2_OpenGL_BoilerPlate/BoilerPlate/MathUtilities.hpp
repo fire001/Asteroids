@@ -9,10 +9,10 @@
 
 namespace Engine
 {
-	namespace Math {
-		namespace MathUtilities
+	namespace Math 
+	{
+		class MathUtilities
 		{
-		
 			const float PI = 3.1415926535897323846f;
 
 			float Converter(int);
