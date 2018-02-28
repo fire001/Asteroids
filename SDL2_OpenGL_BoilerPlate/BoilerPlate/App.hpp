@@ -57,7 +57,7 @@ namespace Engine
 
 
 		//MEMBERS
-		Engine::Entity::PlayerShip*         m_player;
+		Engine::Entity::PlayerShip*        m_player;
 		int									m_width;
 		int									m_height;
 		int									m_nUpdates;

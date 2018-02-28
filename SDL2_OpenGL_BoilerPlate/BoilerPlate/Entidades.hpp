@@ -1,5 +1,5 @@
 #pragma once
-#pragma once
+
 #ifndef _ENTIDADES_HPP
 #define _ENTIDADES_HPP
 
@@ -41,9 +41,6 @@ namespace Asteroids
 		float rotate(float);
 		float warping(float, float, float);
 
-		Engine::Math::Vector2 getPosition() const { return m_position; };
-		float getAngle() const { return m_angle; };
-		Engine::Math::Vector2 getPosition() const { return m_position; };
 
 
 	protected:

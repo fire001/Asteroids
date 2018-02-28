@@ -1,9 +1,5 @@
 #include "Entidades.hpp"
-#include "Vector2.hpp"
-#include <iostream>
-#include "Vector3.h"
-#include "MathUtilities.hpp"
-
+#include "SDL2\SDL_opengl.h"
 namespace Asteroids
 {
 	class Entidades
@@ -13,6 +9,7 @@ namespace Asteroids
 		Entidades::Entidades(int width, int height)
 		{
 			m_position = Engine::Math::Vector2(Engine::Math::Vector2::origin);
+
 			m_mass = 0.5f;
 
 			m_maxwidth = width / 2.0f;
@@ -25,17 +22,17 @@ namespace Asteroids
 		float Entidades::Render()
 		{
 			//Reset Matrix
-			//glLoadIdentity();
+			glLoadIdentity();
 			//Warpeo call
-			warping();
+			warping(50,50,50);
 			//translate to current position
-			//translate(m_position.m_x , m_position.m_y, 0.0f);
+			//gltranslatef(m_position.m_x , m_position.m_y, 0.0f);
 			//rotation
-			//glRotate(angle, 0.0f, 0.0f, 1.0f)
+			glRotatef(m_angle, 0.0f, 0.0f, 1.0f);
 			//color set
 			//glColor3f(color.m_x, color.m_y, color.m_z);
 
-			//glEnd();
+			glEnd();
 		}
 
 

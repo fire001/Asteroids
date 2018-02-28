@@ -81,7 +81,7 @@
 					float y = m_position->m_y + a.m_y;*/
 
 					m_thruster = true;
-					m_position.m_x += warping();
+					m_position.m_x += warping(50,50,50);
 				}
 
 				void Engine::Entity::PlayerShip::RotateLeft()
@@ -96,11 +96,9 @@
 				{
 					float new_angle = -5.0f;
 					m_angle += new_angle;
-<<<<<<< HEAD
 
 					Engine::Math::MathUtilities::ConvertDegreesToRad(m_angle);
-=======
->>>>>>> master
+
 				}
 
 				void Engine::Entity::PlayerShip::ResetOrientation()
