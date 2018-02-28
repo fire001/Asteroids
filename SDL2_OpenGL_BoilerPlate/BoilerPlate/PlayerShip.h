@@ -15,7 +15,7 @@ namespace Nave
 	namespace Entity
 	{
 
-		class PlayerShip
+		class PlayerShip 
 		{
 		public:
 
@@ -40,13 +40,13 @@ namespace Nave
 			void Drag();
 			void shooting();
 			void ResetOrientation();
-			bool CouldCollide() const { return m_inmune; };
+			bool CouldCollide(); //const { return m_inmune; };
 			bool DetectCollision(PlayerShip* playership);
 			bool isColliding() const;
 			virtual void ApplyImpulse(float m_x, float m_y);
 			//impulso es == fuerza * deltatiempo
 			void Impulse();
-			void EraseBullet(Herramientas::Asteroids::Bullet *);
+			void EraseBullet();
 			
 
 			void setCollision(bool status) { m_inmune = status; };

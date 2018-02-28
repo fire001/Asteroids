@@ -1,16 +1,11 @@
 #include "PlayerShip.h"
 #include "SDL2\SDL_opengl.h"
-#include "Vector2.hpp"
-#include "MathUtilities.hpp"
-#include "Entidades.hpp"
-#include "Bullet.hpp"
-
 
 	namespace Nave
 	{
 		namespace Entity
 		{
-				
+			
 				//constructor
 
 			PlayerShip::PlayerShip(int width, int height)
@@ -22,7 +17,7 @@
 				m_width = (width + 50);
 				m_height = (height + 50);
 				m_thrust = (false);
-				m_radius = (0.0f);
+				m_radius = (0.5f);
 				m_rotate = (120);
 				m_mass = (1.0f);
 				m_x = (0);
@@ -154,23 +149,23 @@
 				}
 				}
 
-				void PlayerShip::Impulse() 
+				/*void PlayerShip::Impulse() 
 				{
 					float impulse = (m_thrust / m_mass);
 					float m_x = impulse * std::cosf(m_angleInRads);
 					float m_y = impulse * std::sinf(m_angleInRads);
 					Engine::Math::Vector2(m_x, m_y) += m_velocity;
 
-					return Impulse();
+					Impulse();
 				
-				}
+				}*/
 
-				void PlayerShip::EraseBullet(Herramientas::Asteroids::Bullet *)
+				void PlayerShip::EraseBullet()
 				{
 				}
 
 				// collide
-				bool PlayerShip::CouldCollide() const
+				bool PlayerShip::CouldCollide()
 				{
 					return m_state == NORMAL_STATE;
 				}
@@ -179,16 +174,17 @@
 				{
 					return m_state == COLLIDED_STATE;
 				}
-				bool PlayerShip::DetectCollision(PlayerShip* playership)
+				/*bool PlayerShip::DetectCollision(PlayerShip* playership)
 				{
 					float radiu = (m_radius + playership->m_radius);
 					bool collision = (radiu * radiu) >= Engine::Math::MathUtilities::CalculateSquareDistance(m_x, m_y, playership->m_x, playership->m_y);
 					if (collision)
 					{
 						m_state = COLLIDED_STATE;
-						playership->m_state = COLLIDED_STATE;
+						return playership->m_state = COLLIDED_STATE;
 					}
-				}
+				}*/
+				};
 				
 			}
-		}
+		
